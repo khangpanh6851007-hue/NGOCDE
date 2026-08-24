@@ -3,83 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cung Trời Hóa Lạc</title>
+    <title>Cung Trời Hóa Lạc - Phiên Bản 2026</title>
     <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            --container-bg: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 215, 0, 0.3);
+            --text-main: #f5f5f5;
+            --accent-gold: #ffd700;
+            --clock-color: #00ffcc;
+        }
+        body.theme-gold {
+            --bg-gradient: linear-gradient(135deg, #201305, #4a2707, #261304);
+            --border-color: rgba(255, 223, 128, 0.4);
+            --clock-color: #ffcc00;
+        }
+        body.theme-teal {
+            --bg-gradient: linear-gradient(135deg, #051923, #003554, #006494);
+            --border-color: rgba(0, 229, 255, 0.4);
+            --clock-color: #00e5ff;
+        }
         * {
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #f5f5f5;
+            background: var(--bg-gradient);
+            color: var(--text-main);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             text-align: center;
+            overflow-x: hidden;
+            transition: background 0.5s ease;
+        }
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .top-controls {
+            position: absolute;
+            top: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .theme-btn, .audio-control-btn {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+            transition: all 0.2s;
+        }
+        .theme-btn:hover, .audio-control-btn:hover {
+            background: var(--accent-gold);
+            color: #000;
         }
         .container {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--container-bg);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            padding: 30px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
             border-radius: 20px;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             max-width: 440px;
-            width: 90%;
+            width: 92%;
+            z-index: 2;
+            margin-top: 50px;
+            margin-bottom: 20px;
         }
         h1 {
-            color: #ffd700;
-            font-size: 22px;
-            margin-bottom: 20px;
+            color: var(--accent-gold);
+            font-size: 20px;
+            margin-bottom: 15px;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        .clock-box, .calendar-box {
+        .clock-box, .calendar-box, .divine-box {
             background: rgba(0, 0, 0, 0.4);
-            padding: 15px;
+            padding: 12px;
             border-radius: 12px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
         .box-title {
-            font-size: 13px;
+            font-size: 12px;
             color: #ffeb3b;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         #clock {
-            font-size: 30px;
+            font-size: 28px;
             font-weight: bold;
-            color: #00ffcc;
+            color: var(--clock-color);
             text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
             letter-spacing: 2px;
         }
         #calendar {
-            font-size: 15px;
+            font-size: 14px;
             color: #ffffff;
             font-weight: 500;
+        }
+        #divineMessage {
+            font-size: 13px;
+            color: #fffae6;
+            font-style: italic;
+            margin-bottom: 8px;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .divine-btn {
+            background: linear-gradient(135deg, #8E2DE2, #4A00E0);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(142, 45, 226, 0.4);
+            transition: transform 0.2s;
+        }
+        .divine-btn:active {
+            transform: scale(0.95);
         }
         .links {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 15px;
         }
         .btn {
             background: linear-gradient(135deg, #f12711, #f5af19);
             color: white;
-            padding: 12px 20px;
+            padding: 11px 18px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 14px;
             box-shadow: 0 4px 15px rgba(241, 39, 17, 0.4);
             transition: transform 0.2s, box-shadow 0.2s;
             display: block;
@@ -95,43 +176,65 @@
         .btn-thien-dinh:hover {
             box-shadow: 0 6px 20px rgba(33, 147, 176, 0.6);
         }
+        .instruction {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Canvas nền: Sao băng, hạt lấp lánh & Pháo hoa tương tác -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Nút điều khiển phía trên: Giao diện & Âm thanh -->
+    <div class="top-controls">
+        <button class="audio-control-btn" id="audioBtn" onclick="toggleAudio()">🎵 Âm Thanh: Tắt</button>
+        <button class="theme-btn" onclick="toggleTheme()">🎨 Đổi Màu</button>
+    </div>
+
     <div class="container">
         <h1>✨ Cung Trời Hóa Lạc ✨</h1>
         
-        <!-- Đồng hồ ở cung trời hoá lạc tự động -->
+        <!-- Đồng hồ tự động -->
         <div class="clock-box">
             <div class="box-title">⏰ Đồng hồ Nhân Gian</div>
             <div id="clock">00:00:00</div>
         </div>
         
-        <!-- Lịch ở cung trời hoá lạc tự động -->
+        <!-- Lịch tự động -->
         <div class="calendar-box">
             <div class="box-title">📅 Lịch Nhân Gian</div>
             <div id="calendar">Đang tải lịch...</div>
         </div>
 
+        <!-- Sấm truyền / Lời chúc Thiên Đình -->
+        <div class="divine-box">
+            <div class="box-title">📜 Sấm Truyền Thiên Đình</div>
+            <div id="divineMessage">"Tâm tịnh hướng thiên, vạn sự hanh thông."</div>
+            <button class="divine-btn" onclick="getNewMessage()">Nhận Lộc Sấm Truyền</button>
+        </div>
+
         <!-- Các nút liên kết -->
         <div class="links">
-            <a href="https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/" class="btn" target="_blank">👑 Ngọc Đế 🫅</a>
+            <a href="https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/" class="btn" target="_blank">👑 Ngọc Đế</a>
             <a href="https://khangpanh6851007-hue.github.io/ThienDinh/" class="btn btn-thien-dinh" target="_blank">🏛️ Thiên Đình</a>
         </div>
+        
+        <div class="instruction">💡 Chạm vào màn hình bất kỳ để bắn pháo hoa cung trời!</div>
     </div>
 
     <script>
+        // --- 1. ĐỒNG HỒ & LỊCH TỰ ĐỘNG ---
         function updateDateTime() {
             const now = new Date();
             
-            // Cập nhật đồng hồ tự động
             let hours = String(now.getHours()).padStart(2, '0');
             let minutes = String(now.getMinutes()).padStart(2, '0');
             let seconds = String(now.getSeconds()).padStart(2, '0');
             document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
 
-            // Cập nhật lịch tự động
             const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
             let dayName = days[now.getDay()];
             let date = String(now.getDate()).padStart(2, '0');
@@ -140,11 +243,217 @@
             
             document.getElementById('calendar').innerText = `${dayName}, Ngày ${date}/${month}/${year}`;
         }
-
-        // Chạy ngay lập tức và tự động cập nhật mỗi giây
         setInterval(updateDateTime, 1000);
         updateDateTime();
-    </script>
 
+        // --- 2. SẤM TRUYỀN THIÊN ĐÌNH ---
+        const messages = [
+            "\"Tâm tịnh hướng thiên, vạn sự hanh thông, phước lộc tự khắc tề tựu.\"",
+            "\"Ngọc Đế chiếu lệnh: Hôm nay đại cát, làm việc gì cũng hanh thông, suôn sẻ.\"",
+            "\"Gió lành đưa lối, mây trắng che đầu, bình an là cội nguồn của phú quý.\"",
+            "\"Thiên đình linh khí hội tụ, người thành tâm cầu nguyện ắt gặp quý nhân phù trợ.\"",
+            "\"Vạn vật sinh sôi theo đạo trời, giữ lòng ngay thẳng ắt hưởng trọn an vui.\"",
+            "\"Cung trời hóa lạc hoan ca, buông bỏ muộn phiền, đón nhận nguồn năng lượng thuần khiết.\""
+        ];
+        function getNewMessage() {
+            playChimeSound();
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            document.getElementById('divineMessage').innerText = messages[randomIndex];
+        }
+
+        // --- 3. ĐỔI MÀU GIAO DIỆN (THEME SWITCHER) ---
+        const themes = ['', 'theme-gold', 'theme-teal'];
+        let currentThemeIndex = 0;
+        function toggleTheme() {
+            playChimeSound();
+            document.body.classList.remove(themes[currentThemeIndex]);
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            if(themes[currentThemeIndex]) {
+                document.body.classList.add(themes[currentThemeIndex]);
+            }
+        }
+
+        // --- 4. ÂM THANH KHÔNG GIAN (WEB AUDIO API) ---
+        let audioCtx = null;
+        let isAudioPlaying = false;
+        let ambientInterval = null;
+
+        function toggleAudio() {
+            const btn = document.getElementById('audioBtn');
+            if (!isAudioPlaying) {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                
+                isAudioPlaying = true;
+                btn.innerText = "🎵 Âm Thanh: Bật";
+                startAmbientDrone();
+            } else {
+                isAudioPlaying = false;
+                btn.innerText = "🎵 Âm Thanh: Tắt";
+                stopAmbientDrone();
+            }
+        }
+
+        function startAmbientDrone() {
+            if (!audioCtx) return;
+            playChimeSound();
+            ambientInterval = setInterval(() => {
+                if (isAudioPlaying) playChimeSound();
+            }, 8000);
+        }
+
+        function stopAmbientDrone() {
+            if (ambientInterval) clearInterval(ambientInterval);
+        }
+
+        function playChimeSound() {
+            try {
+                const tempCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = tempCtx.createOscillator();
+                const gain = tempCtx.createGain();
+                const notes = [523.25, 659.25, 783.99, 1046.50]; // Âm giai ngũ cung (C5, E5, G5, C6)
+                osc.frequency.setValueAtTime(notes[Math.floor(Math.random() * notes.length)], tempCtx.currentTime);
+                osc.type = 'sine';
+                
+                gain.gain.setValueAtTime(0.04, tempCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, tempCtx.currentTime + 2.5);
+                
+                osc.connect(gain);
+                gain.connect(tempCtx.destination);
+                
+                osc.start();
+                osc.stop(tempCtx.currentTime + 2.5);
+            } catch(e) {}
+        }
+
+        // --- 5. CANVAS: SAO BĂNG, HẠT LẤP LÁNH & PHÁO HOA ---
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let particles = [];
+        for (let i = 0; i < 65; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.8 + 0.5,
+                alpha: Math.random(),
+                speed: Math.random() * 0.3 + 0.1,
+                alphaSpeed: (Math.random() * 0.02 + 0.005) * (Math.random() < 0.5 ? 1 : -1)
+            });
+        }
+
+        let shootingStars = [];
+        function addShootingStar() {
+            if (Math.random() < 0.025) {
+                shootingStars.push({
+                    x: Math.random() * canvas.width,
+                    y: 0,
+                    length: Math.random() * 80 + 40,
+                    speed: Math.random() * 10 + 6,
+                    opacity: 1
+                });
+            }
+        }
+
+        let fireworks = [];
+        window.addEventListener('click', (e) => {
+            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
+            createFirework(e.clientX, e.clientY);
+            playChimeSound();
+        });
+
+        window.addEventListener('touchstart', (e) => {
+            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
+            const touch = e.touches[0];
+            createFirework(touch.clientX, touch.clientY);
+            playChimeSound();
+        });
+
+        function createFirework(x, y) {
+            const count = 35;
+            const colors = ['#ffd700', '#00ffcc', '#ff3366', '#33ccff', '#ff9900', '#da70d6'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            for (let i = 0; i < count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 5 + 2;
+                fireworks.push({
+                    x: x,
+                    y: y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    alpha: 1,
+                    decay: Math.random() * 0.02 + 0.015,
+                    color: color,
+                    radius: Math.random() * 2 + 1
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Vẽ hạt lấp lánh
+            particles.forEach(p => {
+                p.y -= p.speed;
+                p.alpha += p.alphaSpeed;
+                if (p.alpha <= 0.1 || p.alpha >= 1) p.alphaSpeed *= -1;
+                if (p.y < 0) p.y = canvas.height;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
+                ctx.fill();
+            });
+
+            // Vẽ sao băng
+            addShootingStar();
+            shootingStars.forEach((star, index) => {
+                star.x += star.speed;
+                star.y += star.speed;
+                star.opacity -= 0.02;
+
+                ctx.strokeStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(star.x, star.y);
+                ctx.lineTo(star.x - star.length, star.y - star.length);
+                ctx.stroke();
+
+                if (star.opacity <= 0) {
+                    shootingStars.splice(index, 1);
+                }
+            });
+
+            // Vẽ pháo hoa
+            fireworks.forEach((fw, index) => {
+                fw.x += fw.vx;
+                fw.y += fw.vy;
+                fw.vy += 0.05;
+                fw.alpha -= fw.decay;
+
+                ctx.beginPath();
+                ctx.arc(fw.x, fw.y, fw.radius, 0, Math.PI * 2);
+                ctx.fillStyle = fw.color;
+                ctx.globalAlpha = Math.max(0, fw.alpha);
+                ctx.fill();
+                ctx.globalAlpha = 1.0;
+
+                if (fw.alpha <= 0) {
+                    fireworks.splice(index, 1);
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 </body>
 </html>
