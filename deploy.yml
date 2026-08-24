@@ -1,0 +1,41 @@
+name: Deploy Cung Trời Hóa Lạc to GitHub Pages
+
+on:
+  push:
+    branches: ["main"] # Hoặc "master" tùy vào nhánh chính của bạn trên GitHub
+
+  # Cho phép chạy thủ công từ tab Actions trên GitHub
+  workflow_dispatch:
+
+# Thiết lập quyền cho GITHUB_TOKEN để triển khai lên GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Tránh việc chạy nhiều tiến trình deploy cùng lúc gây xung đột
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout mã nguồn
+        uses: actions/checkout@v4
+
+      - name: Cấu hình GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Tải tệp lên gói triển khai (Artifact)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' # Tải toàn bộ thư mục gốc lên (bao gồm index.html)
+
+      - name: Tiến hành Deploy lên GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
