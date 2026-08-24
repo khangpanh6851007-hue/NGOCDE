@@ -1,22 +1,23 @@
-name: Deploy Cung Trời Hóa Lạc to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
+  # Tự động kích hoạt khi có lệnh push lên nhánh main (hoặc master)
   push:
-    branches: ["main"] # Hoặc "master" tùy vào nhánh chính của bạn trên GitHub
+    branches: ["main"]
 
-  # Cho phép chạy thủ công từ tab Actions trên GitHub
+  # Cho phép bạn bấm nút chạy thủ công (Run workflow) từ tab Actions trên GitHub
   workflow_dispatch:
 
-# Thiết lập quyền cho GITHUB_TOKEN để triển khai lên GitHub Pages
+# Phân quyền cần thiết cho GITHUB_TOKEN để tương tác với GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Tránh việc chạy nhiều tiến trình deploy cùng lúc gây xung đột
+# Tránh việc nhiều bản build chạy chồng chéo cùng lúc
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -31,11 +32,11 @@ jobs:
       - name: Cấu hình GitHub Pages
         uses: actions/configure-pages@v4
 
-      - name: Tải tệp lên gói triển khai (Artifact)
+      - name: Tải lên gói dữ liệu trang web
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Tải toàn bộ thư mục gốc lên (bao gồm index.html)
+          path: '.' # Trỏ tới thư mục gốc chứa file index.html của bạn
 
-      - name: Tiến hành Deploy lên GitHub Pages
+      - name: Tiến hành triển khai lên GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
