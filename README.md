@@ -1,45 +1,28 @@
-# 👑 Cung Trời Hóa Lạc - Phiên Bản 2026
+# ✨ Cung Trời Hóa Lạc
 
-<div align="center">
+Trang web tương tác mang phong cách thiên đình, kết hợp hiệu ứng thị giác (pháo hoa, sao băng, hạt lấp lánh trên Canvas) và âm thanh không gian (Web Audio API).
 
-[![GitHub Pages Status](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?style=for-the-badge&logo=github)](https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+## 🚀 Tính năng nổi bật
 
-Ứng dụng web tương tác độc đáo mang âm hưởng huyền ảo Thiên Đình, kết hợp giữa nghệ thuật tâm linh và công nghệ web hiện đại.
+- **⏰ Đồng hồ & Lịch nhân gian:** Cập nhật thời gian thực, hiển thị ngày tháng năm và thứ bằng tiếng Việt tự động.
+- **📜 Sấm truyền Thiên Đình:** Hộp sấm truyền ngẫu nhiên với âm thanh chuông ngũ cung.
+- **🎨 Trình đổi màu giao diện:** Chuyển đổi linh hoạt giữa các chủ đề màu sắc (`Mặc định`, `Hoàng Kim`, `Ngọc Bích`).
+- **🎵 Âm thanh không gian:** Sử dụng Web Audio API thuần túy để tạo hiệu ứng âm thanh chuông sinh động mà không cần tệp âm thanh bên ngoài.
+- **🎆 Pháo hoa tương tác:** Hiệu ứng hạt pháo hoa, sao băng và không gian sống động khi người dùng chạm hoặc click vào màn hình.
 
-[✨ Trải Nghiệm Trực Tuyến Ngay](https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/)
+## 🔗 Liên kết hệ thống
 
-</div>
+* [👑 Ngọc Đế](https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/)
+* [🏛️ Thiên Đình](https://khangpanh6851007-hue.github.io/ThienDinh/)
+* [🌱 Làm Việc Thiện Tăng Phước Đức](https://khangpanh6851007-hue.github.io/Lamviecthien/)
 
----
+## 🛠️ Công nghệ sử dụng
 
-## 🌟 Tính Năng Nổi Bật
+* **HTML5 / CSS3:** Giao diện hiện đại, tối ưu hóa responsive với CSS Custom Properties và hiệu ứng kính mờ (`backdrop-filter`).
+* **JavaScript (Vanilla):** Xử lý logic thời gian, thuật toán vẽ Canvas (Particle System), và tổng hợp âm thanh bằng Web Audio API (`AudioContext`).
 
-*   **⏰ Đồng Hồ & Lịch Nhân Gian:** Tự động cập nhật thời gian thực, ngày tháng chuẩn xác theo từng giây.
-*   **📜 Sấm Truyền Thiên Đình:** Hệ thống thông điệp ngẫu nhiên mang năng lượng tích cực, giúp tịnh tâm và truyền cảm hứng mỗi ngày.
-*   **🎆 Hiệu Ứng Không Gian (Canvas API):** 
-    *   Sao băng bay lướt qua bầu trời đêm.
-    *   Các hạt lấp lánh huyền ảo chuyển động liên tục.
-    *   Pháo hoa tương tác sống động khi người dùng chạm hoặc nhấp chuột vào màn hình.
-*   **🎵 Âm Thanh Không Gian (Web Audio API):** Tự tạo âm thanh chuông ngũ cung thuần khiết trực tiếp bằng code mà không cần tải file nhạc ngoài (`.mp3`), giúp tối ưu tốc độ tải trang.
-*   **🎨 Tùy Chỉnh Giao Diện:** Chuyển đổi linh hoạt giữa các chủ đề màu sắc khác nhau (*Mặc định, Vàng Hoàng Kim, Xanh Ngọc*).
+## ⚙️ Cài đặt và Chạy thử cục bộ
 
----
-
-## 🚀 Công Nghệ Sử Dụng
-
-*   **HTML5 / CSS3:** Thiết kế giao diện hiện đại với hiệu ứng kính mờ (*Glassmorphism*) và tính năng tùy biến linh hoạt qua CSS Variables (`:root`).
-*   **Vanilla JavaScript (ES6+):** Xử lý logic thời gian, tương tác người dùng, hiệu ứng hoạt họa và âm thanh.
-*   **HTML5 Canvas:** Vẽ và quản lý toàn bộ hệ thống sao băng, hạt sáng và pháo hoa.
-*   **Web Audio API:** Tổng hợp sóng âm thanh kỹ thuật số trực tiếp trên trình duyệt.
-
----
-
-## 📂 Cấu Trúc Dự Án
-
-```text
-📦 Cung-Troi-Hoa-Lac
- ┣ 📜 index.html        # Mã nguồn toàn bộ ứng dụng (HTML + CSS + JS)
- ┗ 📜 README.md         # Tài liệu giới thiệu dự án
+1. Clone kho lưu trữ này về máy:
+   ```bash
+   git clone [https://github.com/khangpanh6851007-hue/CungTroiHoaLac.git](https://github.com/khangpanh6851007-hue/CungTroiHoaLac.git)
