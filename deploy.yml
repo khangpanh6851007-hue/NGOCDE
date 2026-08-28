@@ -1,8 +1,9 @@
-name: Deploy Static Website to GitHub Pages
+name: Deploy Static Content to GitHub Pages
 
 on:
   push:
-    branches: ["main"] # Thay đổi thành "master" nếu nhánh chính của bạn là master
+    branches: ["main"]
+
   workflow_dispatch:
 
 permissions:
@@ -21,16 +22,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup GitHub Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload site artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Thư mục chứa mã nguồn HTML của bạn (gốc)
+          path: '.'
 
       - name: Deploy to GitHub Pages
         id: deployment
