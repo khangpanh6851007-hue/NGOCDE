@@ -1,28 +1,43 @@
-# ✨ Cung Trời Hóa Lạc
+# Hi there, I'm Khang Panh 👋
 
-Trang web tương tác mang phong cách thiên đình, kết hợp hiệu ứng thị giác (pháo hoa, sao băng, hạt lấp lánh trên Canvas) và âm thanh không gian (Web Audio API).
+<div align="center">
+  <img src="https://komarev.com/ghpvc/?username=khangpanh6851007-hue&color=brightgreen&style=flat-square" alt="Profile Views" />
+  <img src="https://img.shields.io/badge/GitHub-100%25-blue?style=flat-square&logo=github" alt="GitHub" />
+  <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Status" />
+</div>
 
-## 🚀 Tính năng nổi bật
+---
 
-- **⏰ Đồng hồ & Lịch nhân gian:** Cập nhật thời gian thực, hiển thị ngày tháng năm và thứ bằng tiếng Việt tự động.
-- **📜 Sấm truyền Thiên Đình:** Hộp sấm truyền ngẫu nhiên với âm thanh chuông ngũ cung.
-- **🎨 Trình đổi màu giao diện:** Chuyển đổi linh hoạt giữa các chủ đề màu sắc (`Mặc định`, `Hoàng Kim`, `Ngọc Bích`).
-- **🎵 Âm thanh không gian:** Sử dụng Web Audio API thuần túy để tạo hiệu ứng âm thanh chuông sinh động mà không cần tệp âm thanh bên ngoài.
-- **🎆 Pháo hoa tương tác:** Hiệu ứng hạt pháo hoa, sao băng và không gian sống động khi người dùng chạm hoặc click vào màn hình.
+### 🚀 About Me
+* 🌱 I’m currently building web systems and divine digital applications.
+* ⚡ Fun fact: Passionate about clean code, modern web technologies, and seamless user experiences.
+* 📫 How to reach me: Through my hosted web applications or GitHub repository issues.
 
-## 🔗 Liên kết hệ thống
+---
 
-* [👑 Ngọc Đế](https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/)
-* [🏛️ Thiên Đình](https://khangpanh6851007-hue.github.io/ThienDinh/)
-* [🌱 Làm Việc Thiện Tăng Phước Đức](https://khangpanh6851007-hue.github.io/Lamviecthien/)
+### 🛠️ Tech Stack & Skills
+<div align="center">
+  <img src="https://img.shields.io/badge/HTML5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/GitHub-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" />
+</div>
 
-## 🛠️ Công nghệ sử dụng
+---
 
-* **HTML5 / CSS3:** Giao diện hiện đại, tối ưu hóa responsive với CSS Custom Properties và hiệu ứng kính mờ (`backdrop-filter`).
-* **JavaScript (Vanilla):** Xử lý logic thời gian, thuật toán vẽ Canvas (Particle System), và tổng hợp âm thanh bằng Web Audio API (`AudioContext`).
+### 📊 GitHub Stats
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=khangpanh6851007-hue&show_icons=true&theme=radical&hide_border=true" alt="GitHub Stats" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=khangpanh6851007-hue&theme=radical&hide_border=true" alt="GitHub Streak" />
+</div>
 
-## ⚙️ Cài đặt và Chạy thử cục bộ
+---
 
-1. Clone kho lưu trữ này về máy:
-   ```bash
-   git clone [https://github.com/khangpanh6851007-hue/CungTroiHoaLac.git](https://github.com/khangpanh6851007-hue/CungTroiHoaLac.git)
+### 🌐 Featured Projects
+* **[Cung Trời Hóa Lạc](https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/)** - Nền tảng tâm linh & giao diện thiên đình tiên tiến.
+* **[Thiên Đình](https://khangpanh6851007-hue.github.io/ThienDinh/)** - Không gian quản trị và trải nghiệm kỹ thuật số.
+* **[Làm Việc Thiện](https://khangpanh6851007-hue.github.io/Lamviecthien/)** - Nền tảng tích phước đức, lan tỏa giá trị tốt đẹp.
+
+<div align="center">
+  <i>✨ "Tâm tịnh hướng thiên, vạn sự hanh thông." ✨</i>
+</div>
