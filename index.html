@@ -176,6 +176,13 @@
         .btn-thien-dinh:hover {
             box-shadow: 0 6px 20px rgba(33, 147, 176, 0.6);
         }
+        .btn-thien-duc {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            box-shadow: 0 4px 15px rgba(17, 153, 142, 0.4);
+        }
+        .btn-thien-duc:hover {
+            box-shadow: 0 6px 20px rgba(17, 153, 142, 0.6);
+        }
         .instruction {
             font-size: 11px;
             color: rgba(255, 255, 255, 0.5);
@@ -185,10 +192,8 @@
 </head>
 <body>
 
-    <!-- Canvas nền: Sao băng, hạt lấp lánh & Pháo hoa tương tác -->
     <canvas id="bgCanvas"></canvas>
 
-    <!-- Nút điều khiển phía trên: Giao diện & Âm thanh -->
     <div class="top-controls">
         <button class="audio-control-btn" id="audioBtn" onclick="toggleAudio()">🎵 Âm Thanh: Tắt</button>
         <button class="theme-btn" onclick="toggleTheme()">🎨 Đổi Màu</button>
@@ -197,29 +202,26 @@
     <div class="container">
         <h1>✨ Cung Trời Hóa Lạc ✨</h1>
         
-        <!-- Đồng hồ tự động -->
         <div class="clock-box">
             <div class="box-title">⏰ Đồng hồ Nhân Gian</div>
             <div id="clock">00:00:00</div>
         </div>
         
-        <!-- Lịch tự động -->
         <div class="calendar-box">
             <div class="box-title">📅 Lịch Nhân Gian</div>
             <div id="calendar">Đang tải lịch...</div>
         </div>
 
-        <!-- Sấm truyền / Lời chúc Thiên Đình -->
         <div class="divine-box">
             <div class="box-title">📜 Sấm Truyền Thiên Đình</div>
             <div id="divineMessage">"Tâm tịnh hướng thiên, vạn sự hanh thông."</div>
             <button class="divine-btn" onclick="getNewMessage()">Nhận Lộc Sấm Truyền</button>
         </div>
 
-        <!-- Các nút liên kết -->
         <div class="links">
             <a href="https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/" class="btn" target="_blank">👑 Ngọc Đế</a>
             <a href="https://khangpanh6851007-hue.github.io/ThienDinh/" class="btn btn-thien-dinh" target="_blank">🏛️ Thiên Đình</a>
+            <a href="https://khangpanh6851007-hue.github.io/Lamviecthien/" class="btn btn-thien-duc" target="_blank">🌱 Làm Việc Thiện Tăng Phước Đức</a>
         </div>
         
         <div class="instruction">💡 Chạm vào màn hình bất kỳ để bắn pháo hoa cung trời!</div>
