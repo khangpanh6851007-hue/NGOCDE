@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cung Trời Hóa Lạc - Phiên Bản 2026</title>
+    <title>Cung Trời Hóa Lạc - Bản Mobile Chuẩn</title>
     <style>
         :root {
             --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
@@ -23,171 +23,83 @@
             --border-color: rgba(0, 229, 255, 0.4);
             --clock-color: #00e5ff;
         }
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--bg-gradient);
             color: var(--text-main);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            overflow-x: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 100vh; text-align: center; overflow-x: hidden;
             transition: background 0.5s ease;
         }
-        #bgCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
+        #bgCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
         .top-controls {
-            position: absolute;
-            top: 15px;
-            display: flex;
-            gap: 10px;
-            z-index: 10;
+            position: absolute; top: 15px; display: flex; gap: 8px; z-index: 10; flex-wrap: wrap; justify-content: center;
         }
-        .theme-btn, .audio-control-btn {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
-            padding: 6px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: bold;
+        .theme-btn, .audio-control-btn, .admin-btn {
+            background: rgba(0, 0, 0, 0.4); border: 1px solid var(--accent-gold); color: var(--accent-gold);
+            padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: bold;
             backdrop-filter: blur(5px);
-            transition: all 0.2s;
-        }
-        .theme-btn:hover, .audio-control-btn:hover {
-            background: var(--accent-gold);
-            color: #000;
         }
         .container {
-            background: var(--container-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            max-width: 440px;
-            width: 92%;
-            z-index: 2;
-            margin-top: 50px;
-            margin-bottom: 20px;
+            background: var(--container-bg); backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color); padding: 25px; border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); max-width: 440px; width: 92%;
+            z-index: 2; margin-top: 60px; margin-bottom: 20px;
         }
-        h1 {
-            color: var(--accent-gold);
-            font-size: 20px;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        h1 { color: var(--accent-gold); font-size: 20px; margin-bottom: 15px; text-transform: uppercase; }
         .clock-box, .calendar-box, .divine-box {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 12px;
-            border-radius: 12px;
-            margin-bottom: 12px;
+            background: rgba(0, 0, 0, 0.4); padding: 12px; border-radius: 12px; margin-bottom: 12px;
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .box-title {
-            font-size: 12px;
-            color: #ffeb3b;
-            margin-bottom: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        #clock {
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--clock-color);
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
-            letter-spacing: 2px;
-        }
-        #calendar {
-            font-size: 14px;
-            color: #ffffff;
-            font-weight: 500;
-        }
-        #divineMessage {
-            font-size: 13px;
-            color: #fffae6;
-            font-style: italic;
-            margin-bottom: 8px;
-            min-height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        .box-title { font-size: 12px; color: #ffeb3b; margin-bottom: 5px; font-weight: 600; text-transform: uppercase; }
+        #clock { font-size: 28px; font-weight: bold; color: var(--clock-color); }
+        #calendar { font-size: 14px; color: #ffffff; }
+        #divineMessage { font-size: 13px; color: #fffae6; font-style: italic; margin-bottom: 8px; min-height: 36px; display: flex; align-items: center; justify-content: center; }
         .divine-btn {
-            background: linear-gradient(135deg, #8E2DE2, #4A00E0);
-            color: white;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(142, 45, 226, 0.4);
-            transition: transform 0.2s;
+            background: linear-gradient(135deg, #8E2DE2, #4A00E0); color: white; border: none;
+            padding: 6px 14px; border-radius: 15px; font-size: 12px; font-weight: bold; cursor: pointer;
         }
-        .divine-btn:active {
-            transform: scale(0.95);
-        }
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
-        }
+        .links { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
         .btn {
-            background: linear-gradient(135deg, #f12711, #f5af19);
-            color: white;
-            padding: 11px 18px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
+            background: linear-gradient(135deg, #f12711, #f5af19); color: white; padding: 11px 18px;
+            border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 14px; display: block;
             box-shadow: 0 4px 15px rgba(241, 39, 17, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: block;
         }
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(241, 39, 17, 0.6);
+        .btn-thien-dinh { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
+        .btn-thien-duc { background: linear-gradient(135deg, #11998e, #38ef7d); }
+        
+        /* BẢNG QUẢN LÝ TRỰC TIẾP (KHÔNG DÙNG PROMPT BỊ CHẶN) */
+        #adminModal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 100; justify-content: center; align-items: center;
         }
-        .btn-thien-dinh {
-            background: linear-gradient(135deg, #2193b0, #6dd5ed);
-            box-shadow: 0 4px 15px rgba(33, 147, 176, 0.4);
+        .admin-card {
+            background: #1a1a2e; border: 1px solid var(--accent-gold); padding: 20px;
+            border-radius: 15px; width: 90%; max-width: 350px; text-align: left;
         }
-        .btn-thien-dinh:hover {
-            box-shadow: 0 6px 20px rgba(33, 147, 176, 0.6);
+        .admin-card h3 { color: var(--accent-gold); margin-top: 0; font-size: 16px; text-align: center; }
+        .admin-card label { font-size: 12px; color: #ddd; display: block; margin-top: 8px; }
+        .admin-card input {
+            width: 100%; padding: 8px; margin-top: 4px; border-radius: 8px; border: 1px solid #444;
+            background: #111; color: #fff; font-size: 13px;
         }
-        .btn-thien-duc {
-            background: linear-gradient(135deg, #11998e, #38ef7d);
-            box-shadow: 0 4px 15px rgba(17, 153, 142, 0.4);
+        .admin-actions { display: flex; gap: 10px; margin-top: 15px; }
+        .admin-actions button {
+            flex: 1; padding: 8px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer;
         }
-        .btn-thien-duc:hover {
-            box-shadow: 0 6px 20px rgba(17, 153, 142, 0.6);
+        .btn-save { background: #38ef7d; color: #000; }
+        .btn-close { background: #ff3366; color: #fff; }
+        
+        .custom-link-wrapper { position: relative; width: 100%; }
+        .btn-custom { background: linear-gradient(135deg, #654ea3, #eaafc8); padding-right: 45px; }
+        .delete-custom {
+            position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.4); border: none; color: #fff; font-size: 12px;
+            width: 24px; height: 24px; border-radius: 50%; cursor: pointer;
         }
-        .instruction {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
-            margin-top: 10px;
-        }
+        .instruction { font-size: 11px; color: rgba(255, 255, 255, 0.5); margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -195,8 +107,9 @@
     <canvas id="bgCanvas"></canvas>
 
     <div class="top-controls">
-        <button class="audio-control-btn" id="audioBtn" onclick="toggleAudio()">🎵 Âm Thanh: Tắt</button>
-        <button class="theme-btn" onclick="toggleTheme()">🎨 Đổi Màu</button>
+        <button class="audio-control-btn" id="audioBtn">🎵 Âm Thanh: Tắt</button>
+        <button class="theme-btn" id="themeBtn">🎨 Đổi Màu</button>
+        <button class="admin-btn" id="adminBtn">⚙️ Quản Lý</button>
     </div>
 
     <div class="container">
@@ -215,10 +128,10 @@
         <div class="divine-box">
             <div class="box-title">📜 Sấm Truyền Thiên Đình</div>
             <div id="divineMessage">"Tâm tịnh hướng thiên, vạn sự hanh thông."</div>
-            <button class="divine-btn" onclick="getNewMessage()">Nhận Lộc Sấm Truyền</button>
+            <button class="divine-btn" id="divineBtn">Nhận Lộc Sấm Truyền</button>
         </div>
 
-        <div class="links">
+        <div class="links" id="linksContainer">
             <a href="https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/" class="btn" target="_blank">👑 Ngọc Đế</a>
             <a href="https://khangpanh6851007-hue.github.io/ThienDinh/" class="btn btn-thien-dinh" target="_blank">🏛️ Thiên Đình</a>
             <a href="https://khangpanh6851007-hue.github.io/Lamviecthien/" class="btn btn-thien-duc" target="_blank">🌱 Làm Việc Thiện Tăng Phước Đức</a>
@@ -227,85 +140,158 @@
         <div class="instruction">💡 Chạm vào màn hình bất kỳ để bắn pháo hoa cung trời!</div>
     </div>
 
+    <!-- BẢNG NHẬP LIỆU ADMIN TRỰC TIẾP -->
+    <div id="adminModal">
+        <div class="admin-card">
+            <h3>⚙️ Quản Lý Liên Kết</h3>
+            <label>Mật Khẩu Quản Lý:</label>
+            <input type="password" id="adminKey" placeholder="Nhập mật khẩu...">
+            <label>Tên Nút Hiển Thị:</label>
+            <input type="text" id="linkName" placeholder="Ví dụ: Trang Chủ">
+            <label>Đường Dẫn URL:</label>
+            <input type="text" id="linkUrl" placeholder="https://...">
+            <div class="admin-actions">
+                <button class="btn-save" id="saveLinkBtn">Lưu Lại</button>
+                <button class="btn-close" id="closeModalBtn">Đóng</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // --- 1. ĐỒNG HỒ & LỊCH TỰ ĐỘNG ---
+        function getStoredLinks() {
+            try {
+                let data = localStorage.getItem('khangpanh_custom_links');
+                if (!data) return [];
+                let links = JSON.parse(data);
+                return Array.isArray(links) ? links : [];
+            } catch (e) { return []; }
+        }
+
+        function renderCustomLinks() {
+            const container = document.getElementById('linksContainer');
+            if (!container) return;
+            container.querySelectorAll('.custom-link-wrapper').forEach(el => el.remove());
+
+            getStoredLinks().forEach((item) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'custom-link-wrapper';
+
+                const a = document.createElement('a');
+                a.href = item.url || '#';
+                a.className = 'btn btn-custom';
+                a.target = '_blank';
+                a.innerText = item.name || 'Liên kết';
+
+                const delBtn = document.createElement('button');
+                delBtn.className = 'delete-custom';
+                delBtn.innerHTML = '✕';
+                delBtn.onclick = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    let pass = prompt("Nhập mật khẩu để xóa (KhangPanh68):");
+                    if (pass === "KhangPanh68") {
+                        let links = getStoredLinks().filter(l => l.id !== item.id);
+                        localStorage.setItem('khangpanh_custom_links', JSON.stringify(links));
+                        renderCustomLinks();
+                    }
+                };
+
+                wrapper.appendChild(a);
+                wrapper.appendChild(delBtn);
+                container.appendChild(wrapper);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCustomLinks();
+
+            const modal = document.getElementById('adminModal');
+            document.getElementById('adminBtn').addEventListener('click', () => {
+                modal.style.display = 'flex';
+            });
+            document.getElementById('closeModalBtn').addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            document.getElementById('saveLinkBtn').addEventListener('click', () => {
+                const key = document.getElementById('adminKey').value.trim();
+                const name = document.getElementById('linkName').value.trim();
+                let url = document.getElementById('linkUrl').value.trim();
+
+                if (key !== "KhangPanh68") {
+                    alert("❌ Sai mật khẩu quản lý!");
+                    return;
+                }
+                if (!name || !url) {
+                    alert("⚠️ Vui lòng điền đủ tên và URL!");
+                    return;
+                }
+                if (!url.startsWith('http')) url = 'https://' + url;
+
+                let links = getStoredLinks();
+                links.push({ id: 'link_' + Date.now(), name, url });
+                localStorage.setItem('khangpanh_custom_links', JSON.stringify(links));
+
+                document.getElementById('adminKey').value = '';
+                document.getElementById('linkName').value = '';
+                document.getElementById('linkUrl').value = '';
+                modal.style.display = 'none';
+                renderCustomLinks();
+                alert("✨ Thêm liên kết thành công!");
+            });
+
+            document.getElementById('audioBtn').addEventListener('click', toggleAudio);
+            document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+            document.getElementById('divineBtn').addEventListener('click', getNewMessage);
+        });
+
         function updateDateTime() {
             const now = new Date();
-            
-            let hours = String(now.getHours()).padStart(2, '0');
-            let minutes = String(now.getMinutes()).padStart(2, '0');
-            let seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
+            const clockEl = document.getElementById('clock');
+            if(clockEl) clockEl.innerText = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
 
             const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
-            let dayName = days[now.getDay()];
-            let date = String(now.getDate()).padStart(2, '0');
-            let month = String(now.getMonth() + 1).padStart(2, '0');
-            let year = now.getFullYear();
-            
-            document.getElementById('calendar').innerText = `${dayName}, Ngày ${date}/${month}/${year}`;
+            const calendarEl = document.getElementById('calendar');
+            if(calendarEl) calendarEl.innerText = `${days[now.getDay()]}, Ngày ${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`;
         }
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
-        // --- 2. SẤM TRUYỀN THIÊN ĐÌNH ---
         const messages = [
             "\"Tâm tịnh hướng thiên, vạn sự hanh thông, phước lộc tự khắc tề tựu.\"",
             "\"Ngọc Đế chiếu lệnh: Hôm nay đại cát, làm việc gì cũng hanh thông, suôn sẻ.\"",
             "\"Gió lành đưa lối, mây trắng che đầu, bình an là cội nguồn của phú quý.\"",
-            "\"Thiên đình linh khí hội tụ, người thành tâm cầu nguyện ắt gặp quý nhân phù trợ.\"",
-            "\"Vạn vật sinh sôi theo đạo trời, giữ lòng ngay thẳng ắt hưởng trọn an vui.\"",
-            "\"Cung trời hóa lạc hoan ca, buông bỏ muộn phiền, đón nhận nguồn năng lượng thuần khiết.\""
+            "\"Thiên đình linh khí hội tụ, người thành tâm cầu nguyện ắt gặp quý nhân phù trợ.\""
         ];
         function getNewMessage() {
             playChimeSound();
-            const randomIndex = Math.floor(Math.random() * messages.length);
-            document.getElementById('divineMessage').innerText = messages[randomIndex];
+            const msgEl = document.getElementById('divineMessage');
+            if(msgEl) msgEl.innerText = messages[Math.floor(Math.random() * messages.length)];
         }
 
-        // --- 3. ĐỔI MÀU GIAO DIỆN (THEME SWITCHER) ---
         const themes = ['', 'theme-gold', 'theme-teal'];
         let currentThemeIndex = 0;
         function toggleTheme() {
             playChimeSound();
             document.body.classList.remove(themes[currentThemeIndex]);
             currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-            if(themes[currentThemeIndex]) {
-                document.body.classList.add(themes[currentThemeIndex]);
-            }
+            if(themes[currentThemeIndex]) document.body.classList.add(themes[currentThemeIndex]);
         }
 
-        // --- 4. ÂM THANH KHÔNG GIAN (WEB AUDIO API) ---
-        let audioCtx = null;
-        let isAudioPlaying = false;
-        let ambientInterval = null;
-
+        let audioCtx = null, isAudioPlaying = false, ambientInterval = null;
         function toggleAudio() {
             const btn = document.getElementById('audioBtn');
             if (!isAudioPlaying) {
                 if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 if (audioCtx.state === 'suspended') audioCtx.resume();
-                
                 isAudioPlaying = true;
-                btn.innerText = "🎵 Âm Thanh: Bật";
-                startAmbientDrone();
+                if(btn) btn.innerText = "🎵 Âm Thanh: Bật";
+                ambientInterval = setInterval(() => { if (isAudioPlaying) playChimeSound(); }, 8000);
+                playChimeSound();
             } else {
                 isAudioPlaying = false;
-                btn.innerText = "🎵 Âm Thanh: Tắt";
-                stopAmbientDrone();
+                if(btn) btn.innerText = "🎵 Âm Thanh: Tắt";
+                if (ambientInterval) clearInterval(ambientInterval);
             }
-        }
-
-        function startAmbientDrone() {
-            if (!audioCtx) return;
-            playChimeSound();
-            ambientInterval = setInterval(() => {
-                if (isAudioPlaying) playChimeSound();
-            }, 8000);
-        }
-
-        function stopAmbientDrone() {
-            if (ambientInterval) clearInterval(ambientInterval);
         }
 
         function playChimeSound() {
@@ -313,149 +299,60 @@
                 const tempCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const osc = tempCtx.createOscillator();
                 const gain = tempCtx.createGain();
-                const notes = [523.25, 659.25, 783.99, 1046.50]; // Âm giai ngũ cung (C5, E5, G5, C6)
-                osc.frequency.setValueAtTime(notes[Math.floor(Math.random() * notes.length)], tempCtx.currentTime);
+                osc.frequency.setValueAtTime([523.25, 659.25, 783.99, 1046.50][Math.floor(Math.random()*4)], tempCtx.currentTime);
                 osc.type = 'sine';
-                
                 gain.gain.setValueAtTime(0.04, tempCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.0001, tempCtx.currentTime + 2.5);
-                
-                osc.connect(gain);
-                gain.connect(tempCtx.destination);
-                
-                osc.start();
-                osc.stop(tempCtx.currentTime + 2.5);
+                osc.connect(gain); gain.connect(tempCtx.destination);
+                osc.start(); osc.stop(tempCtx.currentTime + 2.5);
             } catch(e) {}
         }
 
-        // --- 5. CANVAS: SAO BĂNG, HẠT LẤP LÁNH & PHÁO HOA ---
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeCanvas); resizeCanvas();
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        let particles = [];
-        for (let i = 0; i < 65; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * 1.8 + 0.5,
-                alpha: Math.random(),
-                speed: Math.random() * 0.3 + 0.1,
-                alphaSpeed: (Math.random() * 0.02 + 0.005) * (Math.random() < 0.5 ? 1 : -1)
-            });
-        }
-
-        let shootingStars = [];
-        function addShootingStar() {
-            if (Math.random() < 0.025) {
-                shootingStars.push({
-                    x: Math.random() * canvas.width,
-                    y: 0,
-                    length: Math.random() * 80 + 40,
-                    speed: Math.random() * 10 + 6,
-                    opacity: 1
-                });
-            }
-        }
+        let particles = Array.from({length: 50}, () => ({
+            x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+            radius: Math.random() * 1.8 + 0.5, alpha: Math.random(),
+            speed: Math.random() * 0.3 + 0.1, alphaSpeed: (Math.random() * 0.02 + 0.005) * (Math.random() < 0.5 ? 1 : -1)
+        }));
 
         let fireworks = [];
         window.addEventListener('click', (e) => {
-            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
+            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('#adminModal')) return;
             createFirework(e.clientX, e.clientY);
             playChimeSound();
         });
 
-        window.addEventListener('touchstart', (e) => {
-            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
-            const touch = e.touches[0];
-            createFirework(touch.clientX, touch.clientY);
-            playChimeSound();
-        });
-
         function createFirework(x, y) {
-            const count = 35;
-            const colors = ['#ffd700', '#00ffcc', '#ff3366', '#33ccff', '#ff9900', '#da70d6'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            
-            for (let i = 0; i < count; i++) {
-                const angle = Math.random() * Math.PI * 2;
-                const speed = Math.random() * 5 + 2;
-                fireworks.push({
-                    x: x,
-                    y: y,
-                    vx: Math.cos(angle) * speed,
-                    vy: Math.sin(angle) * speed,
-                    alpha: 1,
-                    decay: Math.random() * 0.02 + 0.015,
-                    color: color,
-                    radius: Math.random() * 2 + 1
-                });
+            const color = ['#ffd700', '#00ffcc', '#ff3366', '#33ccff', '#ff9900'][Math.floor(Math.random()*5)];
+            for (let i = 0; i < 30; i++) {
+                const angle = Math.random() * Math.PI * 2, speed = Math.random() * 5 + 2;
+                fireworks.push({ x, y, vx: Math.cos(angle)*speed, vy: Math.sin(angle)*speed, alpha: 1, decay: Math.random()*0.02+0.015, color, radius: Math.random()*2+1 });
             }
         }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Vẽ hạt lấp lánh
             particles.forEach(p => {
-                p.y -= p.speed;
-                p.alpha += p.alphaSpeed;
+                p.y -= p.speed; p.alpha += p.alphaSpeed;
                 if (p.alpha <= 0.1 || p.alpha >= 1) p.alphaSpeed *= -1;
                 if (p.y < 0) p.y = canvas.height;
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
-                ctx.fill();
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`; ctx.fill();
             });
-
-            // Vẽ sao băng
-            addShootingStar();
-            shootingStars.forEach((star, index) => {
-                star.x += star.speed;
-                star.y += star.speed;
-                star.opacity -= 0.02;
-
-                ctx.strokeStyle = `rgba(255, 255, 255, ${star.opacity})`;
-                ctx.lineWidth = 1.5;
-                ctx.beginPath();
-                ctx.moveTo(star.x, star.y);
-                ctx.lineTo(star.x - star.length, star.y - star.length);
-                ctx.stroke();
-
-                if (star.opacity <= 0) {
-                    shootingStars.splice(index, 1);
-                }
-            });
-
-            // Vẽ pháo hoa
             fireworks.forEach((fw, index) => {
-                fw.x += fw.vx;
-                fw.y += fw.vy;
-                fw.vy += 0.05;
-                fw.alpha -= fw.decay;
-
-                ctx.beginPath();
-                ctx.arc(fw.x, fw.y, fw.radius, 0, Math.PI * 2);
-                ctx.fillStyle = fw.color;
-                ctx.globalAlpha = Math.max(0, fw.alpha);
-                ctx.fill();
-                ctx.globalAlpha = 1.0;
-
-                if (fw.alpha <= 0) {
-                    fireworks.splice(index, 1);
-                }
+                fw.x += fw.vx; fw.y += fw.vy; fw.vy += 0.05; fw.alpha -= fw.decay;
+                ctx.beginPath(); ctx.arc(fw.x, fw.y, fw.radius, 0, Math.PI * 2);
+                ctx.fillStyle = fw.color; ctx.globalAlpha = Math.max(0, fw.alpha); ctx.fill(); ctx.globalAlpha = 1.0;
+                if (fw.alpha <= 0) fireworks.splice(index, 1);
             });
-
             requestAnimationFrame(animate);
         }
         animate();
     </script>
 </body>
 </html>
+ 
