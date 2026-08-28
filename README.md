@@ -1,43 +1,28 @@
-# Hi there, I'm Khang Panh 👋
+# ✨ Cung Trời Hóa Lạc
 
-<div align="center">
-  <img src="https://komarev.com/ghpvc/?username=khangpanh6851007-hue&color=brightgreen&style=flat-square" alt="Profile Views" />
-  <img src="https://img.shields.io/badge/GitHub-100%25-blue?style=flat-square&logo=github" alt="GitHub" />
-  <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Status" />
-</div>
+Ứng dụng web di động tâm linh hiện đại được thiết kế tối ưu hóa trải nghiệm người dùng với các hiệu ứng động, âm thanh chuông ngân tự động và bảng quản lý liên kết tùy chỉnh linh hoạt.
 
----
+## 🚀 Tính năng nổi bật
+- **Giao diện di động chuẩn xác:** Hỗ trợ responsive, tương thích mượt mà trên mọi thiết bị smartphone và máy tính bảng.
+- **Đổi màu chủ đề linh hoạt:** Chuyển đổi qua lại giữa các không gian màu sắc huyền ảo (Mặc định, Vàng Kim, Xanh Ngọc).
+- **Hiệu ứng Canvas sống động:** Nền hạt lấp lánh kết hợp hiệu ứng pháo hoa tương tác khi chạm màn hình.
+- **Âm thanh Web Audio API:** Mô phỏng tiếng chuông thanh tịnh tự nhiên bằng tần số sóng sin mà không cần tệp âm thanh ngoài.
+- **Đồng hồ & Lịch nhân gian:** Cập nhật thời gian thực từng giây kết hợp sấm truyền Thiên Đình ngẫu nhiên.
+- **Quản lý liên kết cá nhân (Admin):** Thêm/xóa liên kết trực tiếp với 7 tùy chọn màu sắc gradient độc quyền, lưu trữ an toàn qua `localStorage`.
 
-### 🚀 About Me
-* 🌱 I’m currently building web systems and divine digital applications.
-* ⚡ Fun fact: Passionate about clean code, modern web technologies, and seamless user experiences.
-* 📫 How to reach me: Through my hosted web applications or GitHub repository issues.
+## 🛠️ Công nghệ sử dụng
+- **HTML5 / CSS3:** Custom Properties, Flexbox, Backdrop Filter Blur.
+- **JavaScript (Vanilla):** DOM Manipulation, Web Audio API, Canvas 2D Rendering.
+- **Lưu trữ:** GitHub Pages & LocalStorage.
 
----
+## 🌐 Trải nghiệm trực tuyến
+Truy cập bản live chính thức: [Cung Trời Hóa Lạc GitHub Pages](https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/)
 
-### 🛠️ Tech Stack & Skills
-<div align="center">
-  <img src="https://img.shields.io/badge/HTML5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" />
-  <img src="https://img.shields.io/badge/CSS3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" />
-  <img src="https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black" />
-  <img src="https://img.shields.io/badge/GitHub-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" />
-</div>
-
----
-
-### 📊 GitHub Stats
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=khangpanh6851007-hue&show_icons=true&theme=radical&hide_border=true" alt="GitHub Stats" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=khangpanh6851007-hue&theme=radical&hide_border=true" alt="GitHub Streak" />
-</div>
+## ⚙️ Hướng dẫn quản trị nhanh
+1. Nhấn nút **⚙️ Quản Lý** ở góc trên cùng giao diện chính.
+2. Nhập mật khẩu quản lý: `********`
+3. Điền Tên nút, Đường dẫn URL và chọn 1 trong 7 màu sắc gradient yêu thích.
+4. Lưu lại để hiển thị ngay lập tức trên màn hình.
 
 ---
-
-### 🌐 Featured Projects
-* **[Cung Trời Hóa Lạc](https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/)** - Nền tảng tâm linh & giao diện thiên đình tiên tiến.
-* **[Thiên Đình](https://khangpanh6851007-hue.github.io/ThienDinh/)** - Không gian quản trị và trải nghiệm kỹ thuật số.
-* **[Làm Việc Thiện](https://khangpanh6851007-hue.github.io/Lamviecthien/)** - Nền tảng tích phước đức, lan tỏa giá trị tốt đẹp.
-
-<div align="center">
-  <i>✨ "Tâm tịnh hướng thiên, vạn sự hanh thông." ✨</i>
-</div>
+*Phát triển bởi KhangPanh - 2026*
