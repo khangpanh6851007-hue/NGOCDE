@@ -208,7 +208,7 @@
                 delBtn.onclick = (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    let pass = prompt("Nhập mật khẩu để xóa (KhangPanh68):");
+                    let pass = prompt("Nhập mật khẩu để xóa (********):");
                     if (pass === "KhangPanh68") {
                         let links = getStoredLinks().filter(l => l.id !== item.id);
                         localStorage.setItem('khangpanh_custom_links', JSON.stringify(links));
