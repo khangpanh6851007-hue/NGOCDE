@@ -70,8 +70,9 @@
         .btn-thien-dinh { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
         .btn-thien-duc { background: linear-gradient(135deg, #11998e, #38ef7d); }
         .btn-chuyen-luan { background: linear-gradient(135deg, #f7971e, #ffd200); color: #1a1a2e; box-shadow: 0 4px 15px rgba(247, 151, 30, 0.4); }
+        .btn-thuong-nguon { background: linear-gradient(135deg, #3a7bd5, #3a6073); box-shadow: 0 4px 15px rgba(58, 123, 213, 0.4); }
+        .btn-thoi-ky-cuoi { background: linear-gradient(135deg, #2b5876, #4e4376); box-shadow: 0 4px 15px rgba(43, 88, 118, 0.4); }
         
-        /* BẢNG QUẢN LÝ TRỰC TIẾP */
         #adminModal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.8); z-index: 100; justify-content: center; align-items: center;
@@ -96,7 +97,6 @@
         .custom-link-wrapper { position: relative; width: 100%; }
         .btn-custom { padding-right: 45px; border: none; text-decoration: none; font-weight: bold; font-size: 14px; display: block; border-radius: 25px; color: white; padding-top: 11px; padding-bottom: 11px; padding-left: 18px; }
         
-        /* 7 màu tùy chỉnh cho nút liên kết */
         .btn-custom.custom-color-1 { background: linear-gradient(135deg, #654ea3, #eaafc8); box-shadow: 0 4px 15px rgba(101, 78, 163, 0.4); }
         .btn-custom.custom-color-2 { background: linear-gradient(135deg, #2193b0, #6dd5ed); box-shadow: 0 4px 15px rgba(33, 147, 176, 0.4); }
         .btn-custom.custom-color-3 { background: linear-gradient(135deg, #11998e, #38ef7d); box-shadow: 0 4px 15px rgba(17, 153, 142, 0.4); }
@@ -126,11 +126,13 @@
     <div class="container">
         <h1>✨ Cung Trời Hóa Lạc ✨</h1>
         
+        <!-- Khối Đồng Hồ Tự Động -->
         <div class="clock-box">
             <div class="box-title">⏰ Đồng hồ Nhân Gian</div>
             <div id="clock">00:00:00</div>
         </div>
         
+        <!-- Khối Lịch Tự Động -->
         <div class="calendar-box">
             <div class="box-title">📅 Lịch Nhân Gian</div>
             <div id="calendar">Đang tải lịch...</div>
@@ -148,10 +150,9 @@
             <a href="https://khangpanh6851007-hue.github.io/Lamviecthien/" class="btn btn-thien-duc" target="_blank">🌱 Làm Việc Thiện Tăng Phước Đức</a>
             <a href="https://khangpanh6851007-hue.github.io/ChuyenLuanThanhVuong/" class="btn btn-chuyen-luan" target="_blank">🫅 Chuyển Luân Thánh Vương</a>
             <a href="https://khangpanh6851007-hue.github.io/Thuongnguonducthanhdanhchonguoihienduc/" class="btn btn-thuong-nguon" target="_blank">☸️ Thượng Ngươn Thánh Đức - Dành Cho Người Hiền Đức</a> 
-            <a href="https://khangpanh6851007-hue.github.io/Man3chuyencuoidaithanhloc/" class="btn btn-man-3-chuyen-cuoi" target="_blank">🌐 Thời Kỳ Cuối - Chuyến Đò Chiều - Màn 3 - Chuyến Chót</a> 
+            <a href="https://khangpanh6851007-hue.github.io/Man3chuyencuoidaithanhloc/" class="btn btn-thoi-ky-cuoi" target="_blank">🌐 Thời Kỳ Cuối - Màn 3 Đò Chiều Chuyến Cuối</a>
         </div>
 
-        
         <div class="instruction">💡 Chạm vào màn hình bất kỳ để bắn pháo hoa cung trời!</div>
     </div>
 
@@ -227,8 +228,25 @@
             });
         }
 
+        /* Hàm cập nhật đồng hồ và lịch tự động mỗi giây */
+        function updateDateTime() {
+            const now = new Date();
+            const clockEl = document.getElementById('clock');
+            if(clockEl) {
+                clockEl.innerText = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+            }
+
+            const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+            const calendarEl = document.getElementById('calendar');
+            if(calendarEl) {
+                calendarEl.innerText = `${days[now.getDay()]}, Ngày ${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`;
+            }
+        }
+        setInterval(updateDateTime, 1000);
+
         window.addEventListener('DOMContentLoaded', () => {
             renderCustomLinks();
+            updateDateTime(); // Chạy cập nhật ngay khi vừa tải xong trang
 
             const modal = document.getElementById('adminModal');
             document.getElementById('adminBtn').addEventListener('click', () => {
@@ -269,18 +287,6 @@
             document.getElementById('themeBtn').addEventListener('click', toggleTheme);
             document.getElementById('divineBtn').addEventListener('click', getNewMessage);
         });
-
-        function updateDateTime() {
-            const now = new Date();
-            const clockEl = document.getElementById('clock');
-            if(clockEl) clockEl.innerText = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
-
-            const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
-            const calendarEl = document.getElementById('calendar');
-            if(calendarEl) calendarEl.innerText = `${days[now.getDay()]}, Ngày ${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`;
-        }
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
 
         const messages = [
             "\"Tâm tịnh hướng thiên, vạn sự hanh thông, phước lộc tự khắc tề tựu.\"",
@@ -365,15 +371,20 @@
             particles.forEach(p => {
                 p.y -= p.speed; p.alpha += p.alphaSpeed;
                 if (p.alpha <= 0.1 || p.alpha >= 1) p.alphaSpeed *= -1;
-                if (p.y < 0) p.y = canvas.height;
+                if (p.y < 0)p.y = canvas.height;
                 ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`; ctx.fill();
             });
             fireworks.forEach((fw, index) => {
                 fw.x += fw.vx; fw.y += fw.vy; fw.vy += 0.05; fw.alpha -= fw.decay;
                 ctx.beginPath(); ctx.arc(fw.x, fw.y, fw.radius, 0, Math.PI * 2);
-                ctx.fillStyle = fw.color; ctx.globalAlpha = Math.max(0, fw.alpha); ctx.fill(); ctx.globalAlpha = 1.0;
-                if (fw.alpha <= 0) fireworks.splice(index, 1);
+                ctx.fillStyle = fw.color;
+                ctx.globalAlpha = fw.alpha;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+                if (fw.alpha <= 0) {
+                    fireworks.splice(index, 1);
+                }
             });
             requestAnimationFrame(animate);
         }
