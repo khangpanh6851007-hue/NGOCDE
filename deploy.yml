@@ -2,18 +2,15 @@ name: Deploy Cung Troi Hoa Lac to GitHub Pages
 
 on:
   push:
-    branches: ["main"] # Đổi thành "master" nếu nhánh chính của bạn là master
-
-  # Cho phép kích hoạt thủ công từ tab Actions trên GitHub
+    branches:
+      - main
   workflow_dispatch:
 
-# Phân quyền cho GITHUB_TOKEN để cấu hình và deploy lên GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Đảm bảo chỉ có một tiến trình deploy chạy tại một thời điểm
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -25,17 +22,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout mã nguồn
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cấu hình GitHub Pages
-        uses: actions/configure-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
-      - name: Đóng gói mã nguồn tĩnh
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: '.' # Lấy toàn bộ thư mục gốc chứa index.html
+          path: "."
 
-      - name: Triển khai lên GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
