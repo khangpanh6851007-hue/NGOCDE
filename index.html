@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#090b22">
-<meta name="description" content="Cung Trời Hóa Lạc Ultra 2027 – Thiên Đình 3D">
+<meta name="description" content="Cung Trời Hóa Lạc Ultra 2027 – V5 lưu trữ cục bộ">
 
-<title>Cung Trời Hóa Lạc Ultra 2027</title>
+<title>Cung Trời Hóa Lạc Ultra 2027 – V5 Local</title>
 <style>
 :root{--gold:#ffe2a0;--cyan:#7cf6e4;--ink:#080b22;--glass:rgba(18,22,57,.78);--line:rgba(255,226,160,.22)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:#f8f5ed;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 50% -10%,#464080 0,transparent 48%),radial-gradient(ellipse at 90% 80%,#07536a55,transparent 35%),linear-gradient(145deg,#07091d,#17143d 55%,#080c27);overflow-x:hidden}
@@ -28,12 +28,14 @@ header{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:#0
 @media(max-width:650px){.clock-grid{grid-template-columns:1fr}.clock-card{padding:15px}.clock-time,.lunar-main{margin:7px 0 3px}}
 
 </style>
-</head>
+<style>#templeGrid{grid-template-columns:repeat(auto-fit,minmax(145px,1fr))}#v3Status .tile{min-height:100px}button:disabled{opacity:.55;cursor:not-allowed}</style><link rel="manifest" href="./manifest.webmanifest"><style>
+#threeStage{height:min(64vh,550px);min-height:340px;border-radius:20px;overflow:hidden;background:radial-gradient(circle at 50% 30%,#343477,#090b22 75%);position:relative;border:1px solid #ffe2a055}#threeStage canvas{display:block;width:100%;height:100%;touch-action:none}.three-overlay{position:absolute;z-index:2;left:14px;top:12px;pointer-events:none;color:#ffe2a0;font-size:12px;background:#090b22aa;padding:9px;border-radius:10px}.v4-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.v4role{display:inline-block;border:1px solid #ffe2a055;border-radius:99px;padding:6px 12px;color:#ffe2a0}.v4rolegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px}.v4rolegrid .tile{min-height:110px}#v4Accounts .entry{align-items:center}#v4Accounts input,#v4Accounts select{min-width:0} 
+</style></head>
 <body>
 <div class="stars"></div>
 <header>
   <div class="brand"><div class="brand-mark">☯</div><span>CUNG TRỜI HÓA LẠC <small style="display:block;color:#aeb4d4;font-size:9px;letter-spacing:.2em">ULTRA 2027</small></span></div>
-  <div class="header-actions"><span class="pill" id="userLabel">Khách tham quan</span><button class="btn small" id="authOpen">Đăng nhập</button><button class="btn small hidden" id="adminOpen">⚙️ Quản lý</button><button class="btn small hidden" id="logoutBtn">Đăng xuất</button></div>
+  <div class="header-actions"><span class="pill" id="userLabel">Khách tham quan</span><button class="btn small" id="authOpen">Đăng nhập</button><button class="btn small hidden" id="adminOpen">⚙️ Quản lý V5</button><button class="btn small hidden" id="logoutBtn">Đăng xuất</button></div>
 </header>
 <main class="wrap">
 <section class="hero">
@@ -56,7 +58,7 @@ header{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:#0
   <div class="clock-foot">Lịch âm dùng phép tính lịch âm Việt Nam (múi giờ UTC+7). Đồng hồ Thiên giới dùng hệ Thiên Khắc riêng: 12 thời thần, mỗi thời thần chia 100 khắc; không hiển thị lại giờ:phút:giây của Nhân gian.</div>
 </section>
 <section>
- <div class="section-head"><div><h2>🏛️ Mười điện Thiên Đình</h2><div class="muted">Chọn một điện để mở chức năng</div></div><span class="muted">ULTRA 2027</span></div>
+ <div class="section-head"><div><h2>🏛️ Mười Tám Điện Thiên Đình</h2><div class="muted">Chọn một điện để mở chức năng</div></div><span class="muted">ULTRA 2027</span></div>
  <div class="grid" id="templeGrid">
   <button class="tile" data-page="dashboard"><span class="ico">👑</span><b>Điện Ngọc Đế</b><small>Trung tâm điều hành</small></button>
   <button class="tile" data-page="map"><span class="ico">🏛️</span><b>Bản đồ Thiên Đình</b><small>Khám phá các điện</small></button>
@@ -68,9 +70,26 @@ header{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:#0
   <button class="tile" data-page="alerts"><span class="ico">🔔</span><b>Thiên Chung</b><small>Thông báo hoạt động</small></button>
   <button class="tile" data-page="universe"><span class="ico">🌌</span><b>Vũ Trụ 3D</b><small>Không gian chiêm nghiệm</small></button>
   <button class="tile" data-page="install"><span class="ico">📱</span><b>Cài đặt PWA</b><small>Thêm vào màn hình chính</small></button>
+  <button class="tile" data-page="missions"><span class="ico">📋</span><b>Điện Nhiệm Vụ</b><small>Nhiệm vụ hằng ngày</small></button>
+  <button class="tile" data-page="treasure"><span class="ico">💎</span><b>Kho Báu Thiên Giới</b><small>Vật phẩm biểu trưng</small></button>
+  <button class="tile" data-page="events"><span class="ico">📅</span><b>Điện Lịch Sự Kiện</b><small>Lịch cá nhân</small></button>
+  <button class="tile" data-page="community"><span class="ico">👥</span><b>Điện Cộng Đồng</b><small>Tổng quan thành viên</small></button>
+  <button class="tile" data-page="analytics"><span class="ico">📊</span><b>Điện Thống Kê</b><small>Biểu đồ hoạt động</small></button>
+  <button class="tile" data-page="security"><span class="ico">🛡️</span><b>Điện An Ninh</b><small>Nhật ký quản trị</small></button>
+  <button class="tile" data-page="backup"><span class="ico">💾</span><b>Điện Sao Lưu</b><small>Xuất và nhập dữ liệu</small></button>
+  <button class="tile" data-page="settings"><span class="ico">⚙️</span><b>Điện Cài Đặt</b><small>Ngôn ngữ và đồng bộ</small></button>
+
  </div>
 </section>
 
+<section class="panel" style="margin-top:14px" id="v4Entry"><div class="section-head" style="margin:0 0 12px"><div><h2>🌌 Thiên Đình 3D thực thụ</h2><div class="muted">WebGL • camera tương tác • mô hình cung điện dựng bằng khối 3D</div></div></div><div class="v4-actions"><button class="btn primary" id="v4Open3D">Khám phá Thiên Đình 3D</button><button class="btn" id="v4OpenRoles">👑 Quản lý cấp bậc</button></div><p class="notice">Bản V5 chạy 3D bằng Three.js khi tải được thư viện. Tài khoản nhiều cấp được lưu cục bộ trên thiết bị; không đồng bộ máy chủ và không phù hợp cho website công khai.</p></section><section class="panel" id="v3Status" style="margin-top:14px">
+<div class="section-head" style="margin:0 0 12px"><div><h2>🚀 THIÊN ĐÌNH ULTRA V5 LOCAL</h2><div class="muted">18 điện chức năng • Lưu trữ cục bộ</div></div><span class="pill">ULTRA 2027</span></div>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(145px,1fr))">
+<div class="tile"><span class="ico">🏛️</span><b>18 điện</b><small>10 điện gốc + 8 điện mở rộng</small></div>
+<div class="tile"><span class="ico">☁️</span><b>💾 Local Storage</b><small>Dữ liệu lưu trên thiết bị này</small></div>
+<div class="tile"><span class="ico">🛡️</span><b>Nhật ký</b><small>Lưu cục bộ trên thiết bị</small></div>
+<div class="tile"><span class="ico">📱</span><b>PWA</b><small>Cần HTTPS và service worker</small></div>
+</div></section>
 <section class="panel" style="margin-top:14px" id="linksSection">
   <div class="section-head" style="margin:0 0 12px">
     <div><h2>🔗 Hệ thống liên kết</h2><div class="muted">Giữ các liên kết gốc và hỗ trợ liên kết tùy chỉnh</div></div>
@@ -104,7 +123,7 @@ header{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:#0
  <div class="panel"><h3 style="margin-top:0;color:var(--gold)">🪷 Tâm niệm hôm nay</h3><p style="color:#d6d8e9;line-height:1.7">Một hành động tử tế, dù nhỏ, cũng có thể làm ngày hôm nay tốt đẹp hơn.</p><button class="btn primary" data-page="merit">Ghi việc thiện</button></div>
 </section>
 <section class="panel hidden" id="featurePanel" style="margin-top:14px"></section>
-<footer>CUNG TRỜI HÓA LẠC • ULTRA 2027<br>Ứng dụng cộng đồng phi thương mại. Điểm công đức là điểm hoạt động nội bộ, không đại diện cho giá trị tâm linh hay đánh giá phẩm hạnh.</footer>
+<footer>CUNG TRỜI HÓA LẠC • ULTRA 2027<br>V5 LOCAL • Dữ liệu lưu trên thiết bị này • Không đồng bộ máy chủ.<br>Ứng dụng cộng đồng phi thương mại. Điểm công đức là điểm hoạt động nội bộ, không đại diện cho giá trị tâm linh hay đánh giá phẩm hạnh.</footer>
 </main>
 <div class="auth hidden" id="authModal">
  <div class="auth-card">
@@ -261,6 +280,27 @@ updateRealmClock();setInterval(updateRealmClock,1000);
 
 currentUser=sessionStorage.getItem(AUTH_SESSION_KEY)==='1'?{username:MANAGER_USERNAME,role:'admin'}:null;
 renderDashboard();updateAuthUI();renderLinks();
+
+// ===== ULTRA V4: additions; original V1 code and content are retained =====
+const V3_AUDIT='cthl_ultra2027_audit_v3';
+const V3_TASKS=[['kindness','Thực hiện một việc tử tế',3],['gratitude','Ghi một điều biết ơn',1],['community','Đóng góp cho cộng đồng',5]];
+function v3log(action){try{let a=JSON.parse(localStorage.getItem(V3_AUDIT)||'[]');a.push({action,at:new Date().toISOString(),user:currentUser?.username||'Khách'});localStorage.setItem(V3_AUDIT,JSON.stringify(a.slice(-300)))}catch{}}
+function v3get(){let s=readState();s.missions??=[];s.treasure??=[];s.events??=[];return s}
+function v3show(t,d,h){showPanel(t,d,h)}
+pages.missions=function(){
+ let s=v3get(),done=new Set(s.missions);
+ v3show('📋 Điện Nhiệm Vụ','Nhiệm vụ gợi ý và điểm nội bộ',`<div class="list">${V3_TASKS.map(x=>`<div class="entry"><div><b>${x[1]}</b><br><small>+${x[2]} điểm</small></div><button class="btn small ${done.has(x[0])?'':'primary'}" data-task="${x[0]}" ${done.has(x[0])?'disabled':''}>${done.has(x[0])?'Đã hoàn thành':'Hoàn thành'}</button></div>`).join('')}</div><p class="notice">Điểm chỉ là quy ước khuyến khích ghi chép, không phải thước đo phẩm hạnh.</p>`);
+ $$('[data-task]').forEach(b=>b.onclick=()=>{let x=V3_TASKS.find(y=>y[0]===b.dataset.task),st=v3get();if(st.missions.includes(x[0]))return;st.missions.push(x[0]);st.merit.push({id:crypto.randomUUID(),title:'Nhiệm vụ: '+x[1],points:x[2],at:new Date().toISOString()});writeState(st);v3log('Hoàn thành '+x[1]);pages.missions()});
+};
+pages.treasure=function(){let s=v3get();v3show('💎 Kho Báu Thiên Giới','Vật phẩm ảo biểu trưng, không giao dịch hoặc quy đổi',`<div class="grid"><div class="tile"><span class="ico">🎁</span><b>Rương Mầm Thiện</b><small>Quà biểu trưng</small></div><div class="tile"><span class="ico">👑</span><b>Vương Miện Ánh Sáng</b><small>Huy hiệu ảo</small></div><div class="tile"><span class="ico">💠</span><b>Ngọc Tâm An</b><small>Vật phẩm sưu tầm</small></div></div><button class="btn primary" id="claimV3" style="margin-top:12px">Nhận quà biểu trưng</button><div class="list">${s.treasure.map(x=>`<div class="entry">🎁 ${escapeHtml(x.name)} <small>${new Date(x.at).toLocaleString('vi-VN')}</small></div>`).join('')||'<div class="entry">Chưa có vật phẩm.</div>'}</div>`);$('#claimV3').onclick=()=>{let st=v3get(),name=['Mầm Thiện','Ngọc Tâm An','Ánh Sáng'][st.treasure.length%3];st.treasure.push({name,at:new Date().toISOString()});writeState(st);v3log('Nhận vật phẩm '+name);pages.treasure()};};
+pages.events=function(){let s=v3get();v3show('📅 Điện Lịch Sự Kiện','Tạo lịch cá nhân; lịch âm dương nằm ở đồng hồ đầu trang',`<form id="eventV3"><input class="field" id="eventNameV3" required maxlength="100" placeholder="Tên sự kiện"><input class="field" id="eventDateV3" type="date" required style="margin-top:8px"><button class="btn primary" style="margin-top:10px">Thêm sự kiện</button></form><div class="list">${s.events.map(x=>`<div class="entry"><b>${escapeHtml(x.name)}</b><small>${escapeHtml(x.date)}</small></div>`).join('')||'<div class="entry">Chưa có sự kiện.</div>'}</div>`);$('#eventV3').onsubmit=e=>{e.preventDefault();let st=v3get();st.events.push({name:$('#eventNameV3').value.trim(),date:$('#eventDateV3').value});writeState(st);v3log('Thêm sự kiện');pages.events()};};
+pages.community=function(){let s=v3get(),n=s.merit.reduce((a,x)=>a+Number(x.points||0),0);v3show('👥 Điện Cộng Đồng','Tổng quan dữ liệu trên thiết bị hiện tại',`<div class="grid"><div class="tile"><b>${currentUser?'1 phiên quản lý':'Khách tham quan'}</b><small>Phiên hiện tại</small></div><div class="tile"><b>${s.merit.length}</b><small>Hoạt động</small></div><div class="tile"><b>${n}</b><small>Điểm nội bộ</small></div></div><p class="notice">Tài khoản nhiều thành viên, phân quyền thật và bảng xếp hạng cộng đồng cần máy chủ và cơ sở dữ liệu.</p>`);};
+pages.analytics=function(){let s=v3get(),max=Math.max(1,...s.merit.map(x=>Number(x.points||0))),total=s.merit.reduce((a,x)=>a+Number(x.points||0),0);v3show('📊 Điện Thống Kê','Biểu đồ điểm từ nhật ký hiện có',`<div class="grid"><div class="tile"><b>${s.merit.length}</b><small>Lượt ghi nhận</small></div><div class="tile"><b>${total}</b><small>Tổng điểm</small></div><div class="tile"><b>${s.missions.length}</b><small>Nhiệm vụ</small></div></div><div class="list">${s.merit.slice(-10).reverse().map(x=>`<div><div style="display:flex;justify-content:space-between"><small>${escapeHtml(x.title)}</small><b>${Number(x.points)||0}</b></div><div style="height:8px;background:#ffffff22;border-radius:9px"><div style="height:8px;width:${Math.max(3,Number(x.points||0)/max*100)}%;background:linear-gradient(90deg,#9a5be8,#edb84c);border-radius:9px"></div></div></div>`).join('')||'<div class="entry">Chưa có dữ liệu.</div>'}</div>`);};
+pages.security=function(){let a=[];try{a=JSON.parse(localStorage.getItem(V3_AUDIT)||'[]')}catch{}v3show('🛡️ Điện An Ninh','Nhật ký thao tác cục bộ và trạng thái phiên',`<div class="entry"><b>Phiên</b><small>${currentUser?'Đã đăng nhập: '+escapeHtml(currentUser.username):'Khách tham quan'}</small></div><div class="entry"><b>Bảo mật</b><small>Đăng nhập trình duyệt hiện tại là demo, không thay thế xác thực máy chủ.</small></div><h3 style="color:var(--gold)">Nhật ký gần đây</h3><div class="list">${a.slice(-30).reverse().map(x=>`<div class="entry"><span>${escapeHtml(x.action)}</span><small>${new Date(x.at).toLocaleString('vi-VN')}</small></div>`).join('')||'<div class="entry">Chưa có nhật ký.</div>'}</div>`);};
+pages.backup=function(){v3show('💾 Điện Sao Lưu','Xuất và khôi phục JSON',`<button class="btn primary" id="exportV3">⬇️ Tải bản sao lưu</button><div style="margin-top:14px"><input class="field" id="importV3" type="file" accept="application/json"></div><button class="btn" id="restoreV3" style="margin-top:10px">Khôi phục dữ liệu</button><p class="notice">Khôi phục thay thế dữ liệu hiện tại. Hãy xuất bản sao lưu trước.</p>`);$('#exportV3').onclick=()=>{let d={app:'Cung Troi Hoa Lac',version:'V3',exportedAt:new Date().toISOString(),state:readState(),customLinks:getCustomLinks()};let u=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download='cung-troi-hoa-lac-backup.json';a.click();URL.revokeObjectURL(u);v3log('Xuất backup')};$('#restoreV3').onclick=async()=>{let f=$('#importV3').files[0];if(!f){toast('Chọn tệp JSON trước');return}try{let d=JSON.parse(await f.text());if(!d.state||!Array.isArray(d.state.merit)||!Array.isArray(d.state.vows))throw 0;if(!confirm('Thay thế dữ liệu hiện tại?'))return;localStorage.setItem(STORE,JSON.stringify({...defaultState,...d.state}));if(Array.isArray(d.customLinks))localStorage.setItem(CUSTOM_LINKS_KEY,JSON.stringify(d.customLinks.filter(x=>x&&safeHttpUrl(x.url))));renderDashboard();renderLinks();v3log('Khôi phục backup');toast('Đã khôi phục');pages.backup()}catch{toast('Tệp JSON không hợp lệ')}};};
+pages.settings=function(){v3show('⚙️ Điện Cài Đặt','Tùy chọn phiên bản V3',`<div class="entry"><b>Ngôn ngữ</b><select class="field" id="langV3" style="max-width:170px"><option value="vi">Tiếng Việt</option><option value="en">English preview</option></select></div><div class="entry"><b>Đồng bộ trực tuyến</b><small>Chưa cấu hình máy chủ/API</small></div><div class="entry"><b>PWA Android</b><small>Cần HTTPS, manifest và service worker</small></div><p class="notice">Bản dịch và đồng bộ máy chủ cần được hoàn thiện ở bước tích hợp tiếp theo.</p>`);$('#langV3').onchange=e=>toast(e.target.value==='en'?'English preview':'Đã chọn Tiếng Việt');};
+v3log('Khởi chạy Ultra V3');
+
 </script>
 
 
@@ -268,4 +308,157 @@ renderDashboard();updateAuthUI();renderLinks();
 
 
 
-</body></html>
+<script>if("serviceWorker" in navigator && location.protocol==="https:"){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}
+// ===== V4: multi-level role demo (client-side only) =====
+const V4_ACCOUNTS='cthl_ultra2027_roles_demo_v4';
+const V4_ROLE_NAMES={ngocde:'👑 Ngọc Đế',thienton:'✨ Thiên Tôn',admin:'🛡️ Quản trị viên',member:'👤 Thành viên'};
+function v4accounts(){try{let a=JSON.parse(localStorage.getItem(V4_ACCOUNTS)||'[]');return Array.isArray(a)?a:[]}catch{return []}}
+function v4save(a){localStorage.setItem(V4_ACCOUNTS,JSON.stringify(a))}
+let v4DemoUser=null;
+function v4Role(){return currentUser?'ngocde':v4DemoUser?.role||'guest'}
+function v4RoleLabel(){return V4_ROLE_NAMES[v4Role()]||'Khách tham quan'}
+function v4RenderRole(){let u=$('#v4RoleTag');if(u)u.textContent=v4RoleLabel()}
+function v4CanManage(){return v4Role()==='ngocde'}
+function v4RolePanel(){
+ const list=v4accounts();const manager=v4CanManage();
+ showPanel('👑 Hệ thống cấp bậc Thiên Đình','Bản mô phỏng phân quyền cục bộ; không dùng cho dữ liệu nhạy cảm',`
+ <div class="v4role">Phiên hiện tại: ${escapeHtml(v4RoleLabel())}</div>
+ <div class="v4rolegrid" style="margin-top:12px">
+ <div class="tile"><span class="ico">👑</span><b>Ngọc Đế</b><small>Quản lý tài khoản demo và hệ thống</small></div>
+ <div class="tile"><span class="ico">✨</span><b>Thiên Tôn</b><small>Điều phối nội dung và nhiệm vụ (minh họa)</small></div>
+ <div class="tile"><span class="ico">🛡️</span><b>Quản trị viên</b><small>Quản lý nội dung (minh họa)</small></div>
+ <div class="tile"><span class="ico">👤</span><b>Thành viên</b><small>Ghi nhật ký, nhận nhiệm vụ</small></div></div>
+ <h3 style="color:var(--gold)">Chọn tài khoản demo</h3>
+ <div class="form-row"><select class="field" id="v4PickUser"><option value="">Khách tham quan</option>${list.map(a=>`<option value="${escapeHtml(a.id)}">${escapeHtml(a.name)} — ${escapeHtml(V4_ROLE_NAMES[a.role])}</option>`).join('')}</select><button class="btn" id="v4EnterDemo">Xem thử giao diện vai trò</button></div>
+ ${manager?`<h3 style="color:var(--gold)">Tạo tài khoản demo</h3><form id="v4AddUser" class="form-row"><input class="field" id="v4Name" maxlength="40" required placeholder="Tên tài khoản demo"><select class="field" id="v4NewRole"><option value="member">Thành viên</option><option value="admin">Quản trị viên</option><option value="thienton">Thiên Tôn</option></select><button class="btn primary">Thêm</button></form><div class="list" id="v4Accounts">${list.map(a=>`<div class="entry"><span>${escapeHtml(a.name)} — ${escapeHtml(V4_ROLE_NAMES[a.role])}</span><button class="btn small" data-v4del="${escapeHtml(a.id)}">Xóa</button></div>`).join('')||'<div class="entry">Chưa có tài khoản demo.</div>'}</div>`:'<p class="notice">Đăng nhập tài khoản Ngọc Đế hiện có để tạo hoặc xóa tài khoản demo.</p>'}
+ <p class="notice">Các tài khoản này không có mật khẩu và chỉ dùng để xem thử vai trò. Không có xác thực máy chủ, không thể bảo đảm phân quyền thật. Để triển khai công khai cần backend, mật khẩu băm phía máy chủ, phiên đăng nhập an toàn và kiểm tra quyền trên từng API.</p>`);
+ $('#v4EnterDemo').onclick=()=>{let a=list.find(x=>x.id===$('#v4PickUser').value);v4DemoUser=a||null;v4log('Xem thử vai trò '+(a?.role||'guest'));toast('Đang xem: '+v4RoleLabel());v4RolePanel()};
+ if(manager){$('#v4AddUser').onsubmit=e=>{e.preventDefault();let name=$('#v4Name').value.trim(),role=$('#v4NewRole').value;if(!name)return;let a=v4accounts();a.push({id:crypto.randomUUID(),name,role});v4save(a);v4log('Tạo tài khoản demo '+name);v4RolePanel()};$$('[data-v4del]').forEach(b=>b.onclick=()=>{if(!confirm('Xóa tài khoản demo này?'))return;v4save(v4accounts().filter(a=>a.id!==b.dataset.v4del));v4log('Xóa tài khoản demo');v4RolePanel()})}
+}
+function v4log(action){if(typeof v3log==='function')v3log(action)}
+$('#v4Open3D').onclick=()=>pages.universe();
+$('#v4OpenRoles').onclick=()=>{if(!currentUser){toast('Đăng nhập để quản lý cấp bậc');$('#authModal').classList.remove('hidden');return}if(!['ngocde','admin'].includes(currentUser.role)){toast('Bạn không có quyền quản lý cấp bậc');return}v5AccountPanel()};
+const v4OriginalUniverse=pages.universe;
+pages.universe=function(){showPanel('🌌 Thiên Đình 3D WebGL','Kéo để xoay • cuộn hoặc chụm để phóng to • chạm các điện để khám phá',`<div id="threeStage"><div class="three-overlay">🏛️ THIÊN ĐÌNH 3D • WebGL</div></div><div class="v4-actions"><button class="btn" id="v4ResetCam">🎥 Đặt lại camera</button><button class="btn" id="v4AutoRotate">🔄 Bật/tắt tự xoay</button><button class="btn" id="v4GoRoles">👑 Cấp bậc</button></div><p class="notice" id="v4ThreeInfo">Đang tải công cụ 3D… Cần kết nối mạng lần đầu để tải thư viện Three.js.</p>`);$('#v4GoRoles').onclick=v4RolePanel;window.dispatchEvent(new Event('v4-init-three'))};
+</script><script type="module">
+let THREE,OrbitControls,active=null;
+async function load(){if(THREE)return;THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js');({OrbitControls}=await import('https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/controls/OrbitControls.js'));}
+function dispose(){if(!active)return;active.running=false;active.observer.disconnect();active.controls.dispose();active.renderer.dispose();active=null;}
+window.addEventListener('v4-init-three',async()=>{const host=document.getElementById('threeStage');if(!host)return;dispose();try{await load();if(!host.isConnected)return;init(host);document.getElementById('v4ThreeInfo').textContent='Mô hình WebGL thời gian thực: cung điện, tháp, đảo nổi, ánh sáng và camera xoay. Đây là mô hình 3D dựng bằng hình học, chưa phải mô hình kiến trúc chi tiết.';}catch(e){const x=document.getElementById('v4ThreeInfo');if(x)x.textContent='Không tải được Three.js. Kiểm tra kết nối mạng hoặc chính sách CDN của hosting.';}});
+function init(host){const scene=new THREE.Scene();scene.background=new THREE.Color('#0a102b');scene.fog=new THREE.FogExp2('#0b102b',0.018);
+const camera=new THREE.PerspectiveCamera(55,host.clientWidth/host.clientHeight,0.1,300);camera.position.set(22,15,27);
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(host.clientWidth,host.clientHeight);renderer.shadowMap.enabled=true;renderer.outputColorSpace=THREE.SRGBColorSpace;host.appendChild(renderer.domElement);
+const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.07;controls.target.set(0,3,0);controls.minDistance=9;controls.maxDistance=75;controls.maxPolarAngle=Math.PI*.48;
+scene.add(new THREE.HemisphereLight('#9fbbff','#382347',2.3));const sun=new THREE.DirectionalLight('#ffe0a4',3.5);sun.position.set(-12,25,12);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);scene.add(sun);
+const gold=new THREE.MeshStandardMaterial({color:'#e8b865',metalness:.68,roughness:.26});const roof=new THREE.MeshStandardMaterial({color:'#a64e63',metalness:.35,roughness:.42});const stone=new THREE.MeshStandardMaterial({color:'#7968aa',metalness:.22,roughness:.65});const blue=new THREE.MeshStandardMaterial({color:'#303c78',metalness:.3,roughness:.55});
+function box(w,h,d,x,y,z,mat=stone){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;scene.add(m);return m}
+function cone(r,h,x,y,z,mat=gold,n=4){const m=new THREE.Mesh(new THREE.ConeGeometry(r,h,n),mat);m.position.set(x,y,z);m.rotation.y=Math.PI/4;m.castShadow=true;scene.add(m);return m}
+function tower(x,z,scale=1){box(2*scale,4*scale,2*scale,x,2*scale,z,stone);box(2.8*scale,.4*scale,2.8*scale,x,4.1*scale,z,gold);cone(2.3*scale,2*scale,x,5.3*scale,z,roof);cone(.3*scale,1.3*scale,x,6.8*scale,z,gold)}
+const island=new THREE.Mesh(new THREE.CylinderGeometry(13,10,2,12),stone);island.position.y=-.6;island.receiveShadow=true;scene.add(island);const bottom=new THREE.Mesh(new THREE.ConeGeometry(10,6,12),blue);bottom.rotation.z=Math.PI;bottom.position.y=-4.5;scene.add(bottom);
+box(13,.6,9,0,.5,0,gold);box(11,5,7,0,3.3,0,stone);box(13,.5,9,0,6.2,0,gold);cone(9,4,0,8.4,0,roof);cone(1,2,0,11.3,0,gold);
+for(let i=-4;i<=4;i+=2)box(.45,4,.45,i,3.1,3.6,gold);
+for(const [x,z] of [[-9,-7],[9,-7],[-9,7],[9,7]])tower(x,z,.85);
+for(let i=0;i<20;i++){let a=i*Math.PI*2/20,r=17+Math.sin(i*8)*3;const cloud=new THREE.Mesh(new THREE.SphereGeometry(1.5+Math.random(),10,8),new THREE.MeshStandardMaterial({color:'#a7a5e5',transparent:true,opacity:.27,roughness:1}));cloud.scale.set(2,.55,1);cloud.position.set(Math.cos(a)*r,-1+Math.sin(i*3),Math.sin(a)*r);scene.add(cloud)}
+const stars=new Float32Array(900);for(let i=0;i<300;i++){stars[i*3]=(Math.random()-.5)*150;stars[i*3+1]=Math.random()*70;stars[i*3+2]=(Math.random()-.5)*150}const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(stars,3));scene.add(new THREE.Points(geo,new THREE.PointsMaterial({color:'#fff0cc',size:.13})));
+let auto=true;document.getElementById('v4AutoRotate').onclick=()=>auto=!auto;document.getElementById('v4ResetCam').onclick=()=>{camera.position.set(22,15,27);controls.target.set(0,3,0);controls.update()};
+const observer=new ResizeObserver(()=>{if(!host.isConnected)return;camera.aspect=host.clientWidth/host.clientHeight;camera.updateProjectionMatrix();renderer.setSize(host.clientWidth,host.clientHeight)});observer.observe(host);
+active={renderer,controls,observer,running:true};function animate(){if(!active||active.renderer!==renderer)return;if(!host.isConnected){dispose();return}requestAnimationFrame(animate);controls.autoRotate=auto;controls.autoRotateSpeed=.5;controls.update();renderer.render(scene,camera)}animate();}
+
+// ===== V5 LOCAL-ONLY ACCOUNT & ROLE SYSTEM =====
+const V5_USERS_KEY='cthl_ultra2027_local_users_v5';
+const V5_SESSION_KEY='cthl_ultra2027_local_session_v5';
+const V5_ROLE_LABEL={ngocde:'Ngọc Đế',thienton:'Thiên Tôn',admin:'Quản trị viên',member:'Thành viên'};
+const V5_ROLE_DESC={
+ ngocde:'Toàn quyền trên ứng dụng và quản lý tài khoản',
+ thienton:'Quản lý nội dung, nhật ký và sự kiện',
+ admin:'Quản lý liên kết, nội dung và thông báo',
+ member:'Sử dụng chức năng cá nhân'
+};
+function v5Users(){try{let a=JSON.parse(localStorage.getItem(V5_USERS_KEY)||'[]');return Array.isArray(a)?a:[]}catch{return[]}}
+function v5SaveUsers(a){localStorage.setItem(V5_USERS_KEY,JSON.stringify(a))}
+function v5Log(action){try{let a=JSON.parse(localStorage.getItem(V3_AUDIT)||'[]');a.push({action,at:new Date().toISOString(),user:currentUser?.username||'Khách'});localStorage.setItem(V3_AUDIT,JSON.stringify(a.slice(-500)))}catch{}}
+async function v5Hash(v){return await sha256Hex(v)}
+function v5IsOwner(){return currentUser?.role==='ngocde'}
+function v5CanManage(){return ['ngocde','admin'].includes(currentUser?.role)}
+function v5RoleAllowed(page){
+ const r=currentUser?.role||'guest';
+ if(['ngocde','admin'].includes(r))return true;
+ if(r==='thienton')return !['security','settings','backup','community'].includes(page);
+ if(r==='member')return !['security','settings'].includes(page);
+ return ['map','library','universe','install','alerts'].includes(page);
+}
+function v5UpdateHeader(){
+ const logged=!!currentUser, role=currentUser?.role;
+ $('#userLabel').textContent=logged?`✦ ${V5_ROLE_LABEL[role]||'Thành viên'} · ${currentUser.username}`:'Khách tham quan';
+ $('#authOpen').classList.toggle('hidden',logged);
+ $('#logoutBtn').classList.toggle('hidden',!logged);
+ $('#adminOpen').classList.toggle('hidden',!['ngocde','admin'].includes(role));
+ $('#managerLinksBox').classList.toggle('hidden',!['ngocde','admin'].includes(role));
+}
+function v5RefreshTiles(){
+ $$('[data-page]').forEach(b=>{const p=b.dataset.page;b.classList.toggle('hidden',!v5RoleAllowed(p))});
+}
+function v5SetUser(u){
+ currentUser=u;
+ if(u){sessionStorage.setItem(V5_SESSION_KEY,JSON.stringify({username:u.username,role:u.role}));sessionStorage.setItem(AUTH_SESSION_KEY,'1')}
+ else{sessionStorage.removeItem(V5_SESSION_KEY);sessionStorage.removeItem(AUTH_SESSION_KEY)}
+ v5UpdateHeader();renderLinks();v5RefreshTiles();
+}
+$('#authForm').onsubmit=async e=>{
+ e.preventDefault();
+ const username=$('#username').value.trim().toLowerCase(),password=$('#password').value;
+ try{
+  const local=v5Users().find(x=>x.username===username);
+  if(local && await v5Hash(password)===local.passwordHash){
+   v5SetUser({username:local.username,role:local.role});$('#authModal').classList.add('hidden');$('#password').value='';v5Log('Đăng nhập');toast('Đăng nhập thành công');return;
+  }
+  if(username===MANAGER_USERNAME.toLowerCase() && await v5Hash(password)===MANAGER_PASSWORD_SHA256){
+   v5SetUser({username:MANAGER_USERNAME,role:'ngocde',legacy:true});$('#authModal').classList.add('hidden');$('#password').value='';v5Log('Ngọc Đế đăng nhập');toast('Đăng nhập Ngọc Đế thành công');return;
+  }
+  $('#authNotice').textContent='Tên tài khoản hoặc mật khẩu không chính xác.';toast('Sai tài khoản hoặc mật khẩu');
+ }catch(err){$('#authNotice').textContent='Trình duyệt không hỗ trợ hàm mã hóa cần thiết.';toast('Không thể xác thực trên trình duyệt này')}
+};
+$('#logoutBtn').onclick=()=>{v5Log('Đăng xuất');v5SetUser(null);toast('Đã đăng xuất');pages.dashboard()};
+$('#adminOpen').onclick=()=>v5AccountPanel();
+function v5AccountPanel(){
+ if(!v5CanManage()){toast('Bạn không có quyền quản lý tài khoản');return}
+ const users=v5Users();
+ showPanel('👑 Trung tâm quản trị V5','Tài khoản cục bộ trên thiết bị này',`
+ <div class="grid">
+  <div class="tile"><span class="ico">👥</span><b>${users.length+1} tài khoản</b><small>Bao gồm tài khoản Ngọc Đế gốc</small></div>
+  <div class="tile"><span class="ico">🔐</span><b>4 cấp quyền</b><small>Ngọc Đế, Thiên Tôn, quản trị viên, thành viên</small></div>
+ </div>
+ <h3 style="color:var(--gold)">Tạo tài khoản mới</h3>
+ <form id="v5CreateUser">
+  <input class="field" id="v5NewName" required minlength="3" maxlength="30" pattern="[A-Za-z0-9._-]+" placeholder="Tên đăng nhập (3–30 ký tự)">
+  <input class="field" id="v5NewPass" required minlength="8" maxlength="100" type="password" placeholder="Mật khẩu (ít nhất 8 ký tự)" style="margin-top:8px">
+  <select class="field" id="v5NewRole" style="margin-top:8px">
+   ${Object.keys(V5_ROLE_LABEL).filter(r=>v5IsOwner()||r==='member'||r==='admin').map(r=>`<option value="${r}">${V5_ROLE_LABEL[r]}</option>`).join('')}
+  </select>
+  <button class="btn primary" style="margin-top:10px">Tạo tài khoản</button>
+ </form>
+ <h3 style="color:var(--gold)">Tài khoản đã tạo</h3>
+ <div class="list" id="v5UsersList">${users.map(u=>`<div class="entry"><div><b>${escapeHtml(u.username)}</b><br><small>${V5_ROLE_LABEL[u.role]} • ${new Date(u.createdAt).toLocaleDateString('vi-VN')}</small></div><button class="btn small" data-v5del="${escapeHtml(u.username)}">Xóa</button></div>`).join('')||'<div class="entry">Chưa có tài khoản phụ.</div>'}</div>
+ <p class="notice">Bản cục bộ: mật khẩu được băm SHA-256 trong trình duyệt, nhưng người có quyền truy cập thiết bị/trình duyệt vẫn có thể sửa dữ liệu. Không dùng cho dữ liệu nhạy cảm hoặc hệ thống công khai.</p>`);
+ $('#v5CreateUser').onsubmit=async e=>{
+  e.preventDefault();const name=$('#v5NewName').value.trim().toLowerCase(),pass=$('#v5NewPass').value,role=$('#v5NewRole').value;
+  if(!/^[a-z0-9._-]{3,30}$/.test(name)){toast('Tên đăng nhập không hợp lệ');return}
+  if(pass.length<8){toast('Mật khẩu cần ít nhất 8 ký tự');return}
+  if(role==='ngocde'&&!v5IsOwner()){toast('Chỉ Ngọc Đế mới được tạo cấp Ngọc Đế');return}
+  const a=v5Users();if(name===MANAGER_USERNAME.toLowerCase()||a.some(x=>x.username===name)){toast('Tên đăng nhập đã tồn tại');return}
+  a.push({username:name,passwordHash:await v5Hash(pass),role,createdAt:new Date().toISOString()});v5SaveUsers(a);v5Log('Tạo tài khoản '+name+' ('+role+')');toast('Đã tạo tài khoản');v5AccountPanel();
+ };
+ $$('[data-v5del]').forEach(b=>b.onclick=()=>{if(!v5IsOwner()){toast('Chỉ Ngọc Đế được xóa tài khoản');return}if(!confirm('Xóa tài khoản '+b.dataset.v5del+'?'))return;v5SaveUsers(v5Users().filter(x=>x.username!==b.dataset.v5del));v5Log('Xóa tài khoản '+b.dataset.v5del);v5AccountPanel()});
+}
+function v5Navigate(page){
+ if(!v5RoleAllowed(page)){toast('Tài khoản không có quyền mở chức năng này');return}
+ pages[page]?.();
+}
+// Wrap every existing page entry point so the original tile listeners also enforce local role visibility.
+Object.keys(pages).forEach(k=>{const original=pages[k];pages[k]=function(){if(!v5RoleAllowed(k)){toast('Tài khoản không có quyền mở chức năng này');return}return original()}});
+const v5OldCurrent=sessionStorage.getItem(V5_SESSION_KEY);
+if(v5OldCurrent){try{const u=JSON.parse(v5OldCurrent),record=v5Users().find(x=>x.username===u.username);if(record&&record.role===u.role)currentUser=u;else if(u.legacy&&u.role==='ngocde')currentUser=u;else currentUser=null}catch{currentUser=null}}
+if(!currentUser&&sessionStorage.getItem(AUTH_SESSION_KEY)==='1')currentUser={username:MANAGER_USERNAME,role:'ngocde',legacy:true};
+v5UpdateHeader();v5RefreshTiles();
+
+</script></body></html>
