@@ -1,586 +1,271 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cung Trời Hóa Lạc - Bản Mobile Chuẩn</title>
-    <style>
-        :root {
-            --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            --container-bg: rgba(255, 255, 255, 0.05);
-            --border-color: rgba(255, 215, 0, 0.3);
-            --text-main: #f5f5f5;
-            --accent-gold: #ffd700;
-            --clock-color: #00ffcc;
-        }
-        body.theme-gold {
-            --bg-gradient: linear-gradient(135deg, #201305, #4a2707, #261304);
-            --border-color: rgba(255, 223, 128, 0.4);
-            --clock-color: #ffcc00;
-        }
-        body.theme-teal {
-            --bg-gradient: linear-gradient(135deg, #051923, #003554, #006494);
-            --border-color: rgba(0, 229, 255, 0.4);
-            --clock-color: #00e5ff;
-        }
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body {
-            margin: 0; padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-main);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            min-height: 100vh; text-align: center; overflow-x: hidden;
-            transition: background 0.5s ease;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090b22">
+<meta name="description" content="Cung Trời Hóa Lạc Ultra 2027 – Thiên Đình 3D">
 
-        /* Màn hình đăng nhập chính */
-        #loginOverlay {
-            position: fixed; inset: 0; z-index: 999;
-            background: rgba(8, 6, 24, 0.94);
-            backdrop-filter: blur(12px);
-            display: flex; align-items: center; justify-content: center;
-            padding: 20px;
-        }
-        .login-card {
-            background: rgba(26, 26, 46, 0.95);
-            border: 1px solid var(--accent-gold);
-            border-radius: 20px;
-            padding: 28px 22px;
-            width: 100%;
-            max-width: 360px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65);
-            text-align: left;
-        }
-        .login-card h2 {
-            margin: 0 0 6px;
-            color: var(--accent-gold);
-            font-size: 19px;
-            text-align: center;
-            text-transform: uppercase;
-        }
-        .login-subtitle {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.65);
-            text-align: center;
-            margin-bottom: 18px;
-        }
-        .login-card label {
-            display: block;
-            font-size: 12px;
-            color: #ddd;
-            margin-top: 10px;
-        }
-        .login-card input {
-            width: 100%;
-            padding: 10px 12px;
-            margin-top: 5px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 215, 0, 0.35);
-            background: #111122;
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-        }
-        .login-card input:focus {
-            border-color: var(--accent-gold);
-        }
-        .login-error {
-            color: #ff5c77;
-            font-size: 12px;
-            min-height: 18px;
-            margin-top: 8px;
-            text-align: center;
-        }
-        .login-btn {
-            width: 100%;
-            margin-top: 10px;
-            padding: 11px;
-            border: none;
-            border-radius: 25px;
-            background: linear-gradient(135deg, #f12711, #f5af19);
-            color: #fff;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(241, 39, 17, 0.4);
-        }
+<title>Cung Trời Hóa Lạc Ultra 2027</title>
+<style>
+:root{--gold:#ffe2a0;--cyan:#7cf6e4;--ink:#080b22;--glass:rgba(18,22,57,.78);--line:rgba(255,226,160,.22)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:#f8f5ed;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 50% -10%,#464080 0,transparent 48%),radial-gradient(ellipse at 90% 80%,#07536a55,transparent 35%),linear-gradient(145deg,#07091d,#17143d 55%,#080c27);overflow-x:hidden}
+button,input,textarea{font:inherit}button{cursor:pointer}.stars{position:fixed;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(2px 2px at 20% 30%,#fff,transparent),radial-gradient(1px 1px at 70% 20%,#fff,transparent),radial-gradient(2px 2px at 85% 65%,#ffe6a5,transparent),radial-gradient(1px 1px at 35% 80%,#fff,transparent);background-size:260px 220px;animation:drift 35s linear infinite}@keyframes drift{to{background-position:260px 220px}}
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:#090b22c9;border-bottom:1px solid var(--line);padding:12px max(16px,calc((100vw - 1180px)/2));display:flex;align-items:center;gap:14px;justify-content:space-between}.brand{display:flex;gap:10px;align-items:center;font-weight:900;letter-spacing:.04em;color:var(--gold)}.brand-mark{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#fff0bd,#b8792c 55%,#523b93);box-shadow:0 0 28px #e8bb6744;font-size:22px}.header-actions{display:flex;gap:8px;align-items:center}.pill,.btn{border:1px solid var(--line);border-radius:999px;padding:9px 14px;background:#ffffff0c;color:#fff}.btn.primary{background:linear-gradient(120deg,#9a5be8,#edb84c);color:#1a1532;border:0;font-weight:800}.btn.small{padding:7px 11px;font-size:12px}.wrap{width:min(1180px,calc(100% - 28px));margin:auto}.hero{padding:48px 0 28px;text-align:center;position:relative}.eyebrow{color:var(--cyan);letter-spacing:.22em;text-transform:uppercase;font-size:11px;font-weight:800}.hero h1{font-size:clamp(30px,6vw,62px);line-height:1.05;margin:12px 0;background:linear-gradient(90deg,#fff5d8,#ffd36e,#d6c2ff);-webkit-background-clip:text;color:transparent;text-shadow:0 8px 50px #d8a34b22}.hero p{max-width:650px;margin:0 auto;color:#c7c9e2;line-height:1.7}.realm{margin:28px auto 24px;max-width:980px;min-height:280px;border:1px solid var(--line);border-radius:28px;overflow:hidden;position:relative;background:radial-gradient(ellipse at 50% 78%,#d69d5c44,transparent 28%),linear-gradient(180deg,#15143a,#292054 55%,#101b3e);box-shadow:0 24px 80px #0008,inset 0 1px #ffffff22;perspective:900px}.realm:before{content:"";position:absolute;inset:auto -10% -95px;height:220px;background:radial-gradient(ellipse,#f3c56d55,transparent 65%);filter:blur(18px)}.moon{position:absolute;right:13%;top:13%;width:75px;height:75px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff8d6,#e5bd79 55%,#9c6b80);box-shadow:0 0 60px #f4d58a88}.palace{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);width:min(520px,88%);height:160px;filter:drop-shadow(0 12px 18px #0009)}.palace .base{position:absolute;bottom:0;left:8%;width:84%;height:44px;background:linear-gradient(90deg,#4d3268,#d6a95f,#573a78);clip-path:polygon(7% 0,93% 0,100% 100%,0 100%)}.palace .hall{position:absolute;bottom:40px;left:22%;width:56%;height:82px;background:linear-gradient(90deg,#6a3d54,#e5b56c 48%,#623b5a);border:2px solid #f4d28c;clip-path:polygon(0 24%,50% 0,100% 24%,94% 100%,6% 100%)}.palace .roof{position:absolute;bottom:112px;left:12%;width:76%;height:55px;background:linear-gradient(180deg,#f8d88e,#9b4e42);clip-path:polygon(0 68%,18% 44%,35% 0,65% 0,82% 44%,100% 68%,88% 77%,72% 57%,28% 57%,12% 77%)}.palace .spire{position:absolute;bottom:161px;left:49%;height:30px;width:5px;background:#f6d78e}.cloud{position:absolute;bottom:18px;color:#fff8;font-size:55px;filter:blur(1px);animation:float 8s ease-in-out infinite}.cloud.c1{left:4%}.cloud.c2{right:5%;animation-delay:-4s}@keyframes float{50%{transform:translateY(-13px)}}
+.realm-label{position:absolute;left:20px;top:18px;text-align:left}.realm-label b{display:block;color:var(--gold);font-size:13px;letter-spacing:.12em}.realm-label span{font-size:11px;color:#d0cce8}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:34px 0 14px}.section-head h2{margin:0;color:var(--gold);font-size:21px}.muted{color:#aeb4d4;font-size:13px}.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.tile{min-height:132px;text-align:left;padding:17px;border-radius:20px;border:1px solid var(--line);background:linear-gradient(145deg,#ffffff12,#ffffff05);color:#fff;box-shadow:0 10px 30px #0002;transition:.2s;position:relative;overflow:hidden}.tile:hover{transform:translateY(-4px);border-color:#f4d18a88;background:#ffffff18}.tile .ico{font-size:27px;display:block;margin-bottom:12px}.tile b{display:block;color:#fff0ce;font-size:14px}.tile small{display:block;color:#adb4d2;margin-top:5px;line-height:1.4}.panel{border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(16px);border-radius:22px;padding:20px;box-shadow:0 16px 40px #0003}.columns{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.form-row{display:flex;gap:8px;flex-wrap:wrap}.field{width:100%;background:#080c28;border:1px solid #ffffff25;color:#fff;border-radius:12px;padding:12px;outline:none}.field:focus{border-color:#f4d18a}.form-row .field{flex:1;min-width:160px}.list{display:grid;gap:9px;margin-top:14px}.entry{padding:12px;border-radius:13px;background:#ffffff0a;border:1px solid #ffffff12;display:flex;justify-content:space-between;gap:12px}.entry small{color:#aeb4d4}.score{font-size:30px;color:var(--gold);font-weight:900}.hidden{display:none!important}.auth{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:18px;background:#060817ed;backdrop-filter:blur(16px)}.auth-card{width:min(430px,100%);padding:26px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#24204d,#0d1232);box-shadow:0 25px 90px #000a}.auth-card h2{margin:0 0 8px;color:var(--gold)}.auth-card p{color:#bac0dd;font-size:13px;line-height:1.6}.auth-card label{display:block;margin:12px 0 6px;font-size:12px;color:#e8d9b9}.auth-tabs{display:flex;gap:8px;margin:16px 0}.auth-tabs button{flex:1}.notice{font-size:12px;color:#b8c1df;line-height:1.6;margin-top:12px}.toast{position:fixed;z-index:80;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;background:#ffe3a0;color:#201833;border-radius:30px;padding:12px 18px;font-weight:800;font-size:13px;transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}footer{text-align:center;color:#8992b8;font-size:11px;padding:40px 10px 28px}.modal{position:fixed;inset:0;z-index:40;background:#030514d9;display:none;place-items:center;padding:18px}.modal.open{display:grid}.modal-card{width:min(650px,100%);max-height:85vh;overflow:auto;background:#15183d;border:1px solid var(--line);border-radius:22px;padding:22px}.modal-card h3{color:var(--gold);margin-top:0}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:600px){header{padding:10px 12px}.brand{font-size:12px}.brand-mark{width:34px;height:34px}.header-actions .pill{display:none}.wrap{width:calc(100% - 22px)}.hero{padding-top:34px}.realm{min-height:245px;border-radius:20px}.palace{transform:translateX(-50%) scale(.8);transform-origin:bottom center}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.tile{min-height:116px;padding:13px}.columns{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.hero h1{font-size:36px}}
 
-        #appContent {
-            display: none;
-            width: 100%;
-            min-height: 100vh;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+.link-item {color:#fff;text-decoration:none;align-items:center;transition:.18s}
+.link-item:hover {border-color:#f4d18a88;transform:translateY(-2px);background:#ffffff14}
+.link-item span {color:var(--gold)}
+.custom-link-row {display:flex;align-items:center;gap:8px}
+.custom-link-row a {flex:1;color:#fff;text-decoration:none}
+.custom-link-row button {border:1px solid #ff879a66;color:#ffc1cb;background:#ff456018;border-radius:10px;padding:7px 10px}
 
-        #bgCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-        .top-controls {
-            position: absolute; top: 15px; display: flex; gap: 8px; z-index: 10; flex-wrap: wrap; justify-content: center;
-        }
-        .theme-btn, .audio-control-btn, .admin-btn, .logout-btn {
-            background: rgba(0, 0, 0, 0.4); border: 1px solid var(--accent-gold); color: var(--accent-gold);
-            padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: bold;
-            backdrop-filter: blur(5px);
-        }
-        .container {
-            background: var(--container-bg); backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color); padding: 25px; border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); max-width: 440px; width: 92%;
-            z-index: 2; margin-top: 60px; margin-bottom: 20px;
-        }
-        h1 { color: var(--accent-gold); font-size: 20px; margin-bottom: 15px; text-transform: uppercase; }
-        .clock-box, .calendar-box, .divine-box {
-            background: rgba(0, 0, 0, 0.4); padding: 12px; border-radius: 12px; margin-bottom: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        .box-title { font-size: 12px; color: #ffeb3b; margin-bottom: 5px; font-weight: 600; text-transform: uppercase; }
-        #clock { font-size: 28px; font-weight: bold; color: var(--clock-color); }
-        #calendar { font-size: 14px; color: #ffffff; }
-        #divineMessage { font-size: 13px; color: #fffae6; font-style: italic; margin-bottom: 8px; min-height: 36px; display: flex; align-items: center; justify-content: center; }
-        .divine-btn {
-            background: linear-gradient(135deg, #8E2DE2, #4A00E0); color: white; border: none;
-            padding: 6px 14px; border-radius: 15px; font-size: 12px; font-weight: bold; cursor: pointer;
-        }
-        .links { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
-        .btn {
-            background: linear-gradient(135deg, #f12711, #f5af19); color: white; padding: 11px 18px;
-            border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 14px; display: block;
-            box-shadow: 0 4px 15px rgba(241, 39, 17, 0.4);
-        }
-        .btn-thien-dinh { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
-        .btn-thien-duc { background: linear-gradient(135deg, #11998e, #38ef7d); }
-        .btn-chuyen-luan { background: linear-gradient(135deg, #f7971e, #ffd200); color: #1a1a2e; box-shadow: 0 4px 15px rgba(247, 151, 30, 0.4); }
-        .btn-thuong-nguon { background: linear-gradient(135deg, #3a7bd5, #3a6073); box-shadow: 0 4px 15px rgba(58, 123, 213, 0.4); }
-        .btn-thoi-ky-cuoi { background: linear-gradient(135deg, #2b5876, #4e4376); box-shadow: 0 4px 15px rgba(43, 88, 118, 0.4); }
-        .btn-thanh-loc { background: linear-gradient(135deg, #8e2de2, #ff0844); box-shadow: 0 4px 15px rgba(255, 8, 68, 0.4); }
 
-        #adminModal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 100; justify-content: center; align-items: center;
-        }
-        .admin-card {
-            background: #1a1a2e; border: 1px solid var(--accent-gold); padding: 20px;
-            border-radius: 15px; width: 90%; max-width: 350px; text-align: left;
-        }
-        .admin-card h3 { color: var(--accent-gold); margin-top: 0; font-size: 16px; text-align: center; }
-        .admin-card label { font-size: 12px; color: #ddd; display: block; margin-top: 8px; }
-        .admin-card input, .admin-card select {
-            width: 100%; padding: 8px; margin-top: 4px; border-radius: 8px; border: 1px solid #444;
-            background: #111; color: #fff; font-size: 13px; outline: none;
-        }
-        .admin-actions { display: flex; gap: 10px; margin-top: 15px; }
-        .admin-actions button {
-            flex: 1; padding: 8px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer;
-        }
-        .btn-save { background: #38ef7d; color: #000; }
-        .btn-close { background: #ff3366; color: #fff; }
+.realm-clock{margin:0 auto 24px}.clock-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.clock-card{min-width:0;padding:18px;border-radius:18px;border:1px solid #ffffff20;background:linear-gradient(145deg,#ffffff12,#ffffff05);box-shadow:inset 0 1px #ffffff12}.human-clock{border-color:#72d9ed55}.heaven-clock{border-color:#f3d08b66}.lunar-clock{border-color:#c8a6ff55}.clock-kicker{font-size:11px;letter-spacing:.16em;font-weight:900;color:#d8d9f2}.clock-time{font-size:clamp(28px,4vw,42px);font-variant-numeric:tabular-nums;font-weight:900;letter-spacing:.035em;margin:12px 0 5px;color:#fff}.heaven-clock .clock-time{color:#ffe2a0}.heaven-clock{background:radial-gradient(circle at 50% 42%,#8b642c55,transparent 58%),linear-gradient(145deg,#38284d,#17132f 72%);border-color:#f6d58b99;position:relative;overflow:hidden}.heaven-clock:after{content:"☼";position:absolute;right:12px;top:8px;font-size:68px;color:#ffe2a0;opacity:.08;pointer-events:none}.heaven-clock .clock-time{font-size:clamp(30px,4vw,44px);letter-spacing:.06em;text-shadow:0 0 22px #ffcf6b66}.heaven-meter{height:6px;background:#ffffff18;border-radius:99px;overflow:hidden;margin-top:13px}.heaven-meter span{display:block;height:100%;width:0;background:linear-gradient(90deg,#a77aee,#ffe29b);border-radius:99px;transition:width .5s}.heaven-progress{font-size:11px;color:#e7d5ad;margin-top:6px}.lunar-main{font-size:clamp(30px,4vw,42px);font-weight:900;color:#dfc8ff;margin:12px 0 5px}.clock-date{font-size:14px;font-weight:800;color:#fff0cf;line-height:1.5}.clock-sub{font-size:12px;color:#aeb4d4;margin-top:5px}.clock-foot{font-size:11px;line-height:1.6;color:#aeb4d4;margin-top:12px}
+@media(max-width:650px){.clock-grid{grid-template-columns:1fr}.clock-card{padding:15px}.clock-time,.lunar-main{margin:7px 0 3px}}
 
-        .custom-link-wrapper { position: relative; width: 100%; }
-        .btn-custom { padding-right: 45px; border: none; text-decoration: none; font-weight: bold; font-size: 14px; display: block; border-radius: 25px; color: white; padding-top: 11px; padding-bottom: 11px; padding-left: 18px; }
-
-        .btn-custom.custom-color-1 { background: linear-gradient(135deg, #654ea3, #eaafc8); box-shadow: 0 4px 15px rgba(101, 78, 163, 0.4); }
-        .btn-custom.custom-color-2 { background: linear-gradient(135deg, #2193b0, #6dd5ed); box-shadow: 0 4px 15px rgba(33, 147, 176, 0.4); }
-        .btn-custom.custom-color-3 { background: linear-gradient(135deg, #11998e, #38ef7d); box-shadow: 0 4px 15px rgba(17, 153, 142, 0.4); }
-        .btn-custom.custom-color-4 { background: linear-gradient(135deg, #f12711, #f5af19); box-shadow: 0 4px 15px rgba(241, 39, 17, 0.4); }
-        .btn-custom.custom-color-5 { background: linear-gradient(135deg, #cb356b, #bd3f32); box-shadow: 0 4px 15px rgba(203, 53, 107, 0.4); }
-        .btn-custom.custom-color-6 { background: linear-gradient(135deg, #f7971e, #ffd200); box-shadow: 0 4px 15px rgba(247, 151, 30, 0.4); }
-        .btn-custom.custom-color-7 { background: linear-gradient(135deg, #4776E6, #8E54E9); box-shadow: 0 4px 15px rgba(71, 118, 230, 0.4); }
-
-        .delete-custom {
-            position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.4); border: none; color: #fff; font-size: 12px;
-            width: 24px; height: 24px; border-radius: 50%; cursor: pointer; z-index: 3;
-        }
-        .instruction { font-size: 11px; color: rgba(255, 255, 255, 0.5); margin-top: 10px; }
-    </style>
+</style>
 </head>
 <body>
+<div class="stars"></div>
+<header>
+  <div class="brand"><div class="brand-mark">☯</div><span>CUNG TRỜI HÓA LẠC <small style="display:block;color:#aeb4d4;font-size:9px;letter-spacing:.2em">ULTRA 2027</small></span></div>
+  <div class="header-actions"><span class="pill" id="userLabel">Khách tham quan</span><button class="btn small" id="authOpen">Đăng nhập</button><button class="btn small hidden" id="adminOpen">⚙️ Quản lý</button><button class="btn small hidden" id="logoutBtn">Đăng xuất</button></div>
+</header>
+<main class="wrap">
+<section class="hero">
+  <div class="eyebrow">✧ Thiên giới • An nhiên • Việc thiện ✧</div>
+  <h1>Thiên Đình 3D</h1>
+  <p>Không gian số để lưu giữ tâm nguyện, ghi nhận việc thiện và nuôi dưỡng những hành động tử tế mỗi ngày.</p>
+  <div class="realm" aria-label="Minh họa cung điện thiên giới 3D">
+    <div class="moon"></div><div class="realm-label"><b>THƯỢNG GIỚI</b><span>Điện Ngọc • Mây lành • Ánh vàng</span></div>
+    <div class="palace"><div class="spire"></div><div class="roof"></div><div class="hall"></div><div class="base"></div></div>
+    <div class="cloud c1">☁</div><div class="cloud c2">☁</div>
+  </div>
+</section>
+<section class="panel realm-clock" aria-label="Đồng hồ và lịch Song Giới">
+  <div class="section-head" style="margin:0 0 14px"><div><h2>🕰️ Đồng hồ &amp; Lịch Song Giới</h2><div class="muted">Tự động cập nhật theo thời gian Việt Nam • UTC+7</div></div><span class="muted" id="clockSync">● Đang đồng bộ</span></div>
+  <div class="clock-grid">
+    <article class="clock-card human-clock"><div class="clock-kicker">🌏 NHÂN GIAN</div><div class="clock-time" id="humanTime">--:--:--</div><div class="clock-date" id="solarDate">Đang tải ngày dương lịch…</div><div class="clock-sub" id="solarWeekday"></div></article>
+    <article class="clock-card heaven-clock"><div class="clock-kicker">✨ THIÊN GIỚI</div><div class="clock-time" id="heavenTime">KHẮC --</div><div class="clock-date" id="heavenHour">Đang xác định thời thần…</div><div class="clock-sub" id="heavenSub">Thiên lịch • 12 thời thần × 100 thiên khắc</div><div class="heaven-meter"><span id="heavenMeter"></span></div><div class="heaven-progress" id="heavenProgress">Đang vận hành thiên khắc…</div></article>
+    <article class="clock-card lunar-clock"><div class="clock-kicker">📜 LỊCH THIÊN GIỚI</div><div class="lunar-main" id="lunarDate">-- / --</div><div class="clock-date" id="lunarMonthYear">Đang tính âm lịch…</div><div class="clock-sub" id="lunarLeap"></div></article>
+  </div>
+  <div class="clock-foot">Lịch âm dùng phép tính lịch âm Việt Nam (múi giờ UTC+7). Đồng hồ Thiên giới dùng hệ Thiên Khắc riêng: 12 thời thần, mỗi thời thần chia 100 khắc; không hiển thị lại giờ:phút:giây của Nhân gian.</div>
+</section>
+<section>
+ <div class="section-head"><div><h2>🏛️ Mười điện Thiên Đình</h2><div class="muted">Chọn một điện để mở chức năng</div></div><span class="muted">ULTRA 2027</span></div>
+ <div class="grid" id="templeGrid">
+  <button class="tile" data-page="dashboard"><span class="ico">👑</span><b>Điện Ngọc Đế</b><small>Trung tâm điều hành</small></button>
+  <button class="tile" data-page="map"><span class="ico">🏛️</span><b>Bản đồ Thiên Đình</b><small>Khám phá các điện</small></button>
+  <button class="tile" data-page="library"><span class="ico">📜</span><b>Điện Thiên Thư</b><small>Thư viện nội dung</small></button>
+  <button class="tile" data-page="merit"><span class="ico">🌱</span><b>Điện Công Đức</b><small>Nhật ký việc thiện</small></button>
+  <button class="tile" data-page="vows"><span class="ico">🪷</span><b>Điện Tâm Nguyện</b><small>Lưu lời nguyện</small></button>
+  <button class="tile" data-page="ranking"><span class="ico">🏆</span><b>Bảng Công Đức</b><small>Thống kê cá nhân</small></button>
+  <button class="tile" data-page="rewards"><span class="ico">🎁</span><b>Điện Phước Lộc</b><small>Huy hiệu tinh thần</small></button>
+  <button class="tile" data-page="alerts"><span class="ico">🔔</span><b>Thiên Chung</b><small>Thông báo hoạt động</small></button>
+  <button class="tile" data-page="universe"><span class="ico">🌌</span><b>Vũ Trụ 3D</b><small>Không gian chiêm nghiệm</small></button>
+  <button class="tile" data-page="install"><span class="ico">📱</span><b>Cài đặt PWA</b><small>Thêm vào màn hình chính</small></button>
+ </div>
+</section>
 
-    <!-- Màn hình đăng nhập chính -->
-    <div id="loginOverlay">
-        <form class="login-card" id="loginForm">
-            <h2>🔐 Đăng Nhập</h2>
-            <div class="login-subtitle">Cung Trời Hóa Lạc</div>
-            <label for="loginUser">Tên tài khoản</label>
-            <input type="text" id="loginUser" autocomplete="username" required placeholder="Nhập tên tài khoản...">
-            <label for="loginPass">Mật khẩu</label>
-            <input type="password" id="loginPass" autocomplete="current-password" required placeholder="Nhập mật khẩu...">
-            <div class="login-error" id="loginError"></div>
-            <button type="submit" class="login-btn">Vào Cung Trời</button>
-        </form>
+<section class="panel" style="margin-top:14px" id="linksSection">
+  <div class="section-head" style="margin:0 0 12px">
+    <div><h2>🔗 Hệ thống liên kết</h2><div class="muted">Giữ các liên kết gốc và hỗ trợ liên kết tùy chỉnh</div></div>
+  </div>
+  <input class="field" id="linkSearch" type="search" placeholder="🔎 Tìm kiếm liên kết..." aria-label="Tìm kiếm liên kết">
+  <div class="list" id="linksContainer" style="margin-top:12px">
+    <a class="entry link-item" href="https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/" target="_blank" rel="noopener"><b>👑 Ngọc Đế</b><span>↗</span></a>
+    <a class="entry link-item" href="https://khangpanh6851007-hue.github.io/ThienDinh/" target="_blank" rel="noopener"><b>🏛️ Thiên Đình</b><span>↗</span></a>
+    <a class="entry link-item" href="https://khangpanh6851007-hue.github.io/Lamviecthien/" target="_blank" rel="noopener"><b>🌱 Làm Việc Thiện Tăng Phước Đức</b><span>↗</span></a>
+    <a class="entry link-item" href="https://khangpanh6851007-hue.github.io/ChuyenLuanThanhVuong/" target="_blank" rel="noopener"><b>🫅 Chuyển Luân Thánh Vương</b><span>↗</span></a>
+    <a class="entry link-item" href="https://khangpanh6851007-hue.github.io/Thuongnguonducthanhdanhchonguoihienduc/" target="_blank" rel="noopener"><b>☸️ Thượng Ngươn Thánh Đức - Dành Cho Người Hiền Đức</b><span>↗</span></a>
+    <a class="entry link-item" href="https://khangpanh6851007-hue.github.io/Man3chuyencuoidaithanhloc/" target="_blank" rel="noopener"><b>🌐 Thời Kỳ Cuối - Màn 3 Đò Chiều Chuyến Cuối</b><span>↗</span></a>
+    <a class="entry link-item" href="https://khangpanh6851007-hue.github.io/Thanhlocloainguoi/" target="_blank" rel="noopener"><b>🔥 Thanh Lọc Loài Người Và Linh Hồn Tà Ác</b><span>↗</span></a>
+  </div>
+  <div id="customLinks" class="list"></div>
+  <div id="managerLinksBox" class="hidden" style="margin-top:18px;border-top:1px solid var(--line);padding-top:16px">
+    <h3 style="color:var(--gold);margin:0 0 10px">⚙️ Quản lý liên kết – Ngọc Đế</h3>
+    <div class="form-row">
+      <input class="field" id="newLinkName" maxlength="100" placeholder="Tên liên kết">
+      <input class="field" id="newLinkUrl" type="url" placeholder="https://...">
+      <button class="btn primary" id="addLinkBtn" type="button">Thêm liên kết</button>
     </div>
+    <p class="notice">Chỉ tài khoản Ngọc Đế mới thấy công cụ quản lý. Liên kết tùy chỉnh được lưu trên thiết bị này.</p>
+  </div>
+  <p class="notice" id="linksNotice">Các liên kết gốc được giữ nguyên. Đăng nhập Ngọc Đế để thêm hoặc xóa liên kết tùy chỉnh.</p>
+</section>
 
-    <!-- Nội dung chính sau khi đăng nhập -->
-    <div id="appContent">
-        <canvas id="bgCanvas"></canvas>
-
-        <div class="top-controls">
-            <button class="audio-control-btn" id="audioBtn">🎵 Âm Thanh: Tắt</button>
-            <button class="theme-btn" id="themeBtn">🎨 Đổi Màu</button>
-            <button class="admin-btn" id="adminBtn">⚙️ Quản Lý</button>
-            <button class="logout-btn" id="logoutBtn">🚪 Đăng Xuất</button>
-        </div>
-
-        <div class="container">
-            <h1>✨ Cung Trời Hóa Lạc ✨</h1>
-
-            <!-- Khối Đồng Hồ Tự Động -->
-            <div class="clock-box">
-                <div class="box-title">⏰ Đồng hồ Nhân Gian</div>
-                <div id="clock">00:00:00</div>
-            </div>
-
-            <!-- Khối Lịch Tự Động -->
-            <div class="calendar-box">
-                <div class="box-title">📅 Lịch Nhân Gian</div>
-                <div id="calendar">Đang tải lịch...</div>
-            </div>
-
-            <div class="divine-box">
-                <div class="box-title">📜 Sấm Truyền Thiên Đình</div>
-                <div id="divineMessage">"Tâm tịnh hướng thiên, vạn sự hanh thông."</div>
-                <button class="divine-btn" id="divineBtn">Nhận Lộc Sấm Truyền</button>
-            </div>
-
-            <div class="links" id="linksContainer">
-                <a href="https://khangpanh6851007-hue.github.io/Ngocdecungtroihoalac/" class="btn" target="_blank">👑 Ngọc Đế</a>
-                <a href="https://khangpanh6851007-hue.github.io/ThienDinh/" class="btn btn-thien-dinh" target="_blank">🏛️ Thiên Đình</a>
-                <a href="https://khangpanh6851007-hue.github.io/Lamviecthien/" class="btn btn-thien-duc" target="_blank">🌱 Làm Việc Thiện Tăng Phước Đức</a>
-                <a href="https://khangpanh6851007-hue.github.io/ChuyenLuanThanhVuong/" class="btn btn-chuyen-luan" target="_blank">🫅 Chuyển Luân Thánh Vương</a>
-                <a href="https://khangpanh6851007-hue.github.io/Thuongnguonducthanhdanhchonguoihienduc/" class="btn btn-thuong-nguon" target="_blank">☸️ Thượng Ngươn Thánh Đức - Dành Cho Người Hiền Đức</a>
-                <a href="https://khangpanh6851007-hue.github.io/Man3chuyencuoidaithanhloc/" class="btn btn-thoi-ky-cuoi" target="_blank">🌐 Thời Kỳ Cuối - Màn 3 Đò Chiều Chuyến Cuối</a>
-                <a href="https://khangpanh6851007-hue.github.io/Thanhlocloainguoi/" class="btn btn-thanh-loc" target="_blank">🔥 Thanh Lọc Loài Người Và Linh Hồn Tà Ác</a>
-            </div>
-
-            <div class="instruction">💡 Chạm vào màn hình bất kỳ để bắn pháo hoa cung trời!</div>
-        </div>
+<section class="section-head"><div><h2 id="panelTitle">👑 Điện Ngọc Đế – Tổng quan</h2><div class="muted" id="panelDesc">Tóm tắt hoạt động của bạn</div></div></section>
+<section class="columns" id="dashboardPanel">
+ <div class="panel"><div class="muted">TỔNG ĐIỂM CÔNG ĐỨC CÁ NHÂN</div><div class="score" id="meritTotal">0</div><div class="muted">Điểm nội bộ từ các việc thiện đã ghi nhận</div><div class="list" id="recentList"><div class="entry">Chưa có hoạt động. Hãy bắt đầu bằng một việc thiện nhỏ.</div></div></div>
+ <div class="panel"><h3 style="margin-top:0;color:var(--gold)">🪷 Tâm niệm hôm nay</h3><p style="color:#d6d8e9;line-height:1.7">Một hành động tử tế, dù nhỏ, cũng có thể làm ngày hôm nay tốt đẹp hơn.</p><button class="btn primary" data-page="merit">Ghi việc thiện</button></div>
+</section>
+<section class="panel hidden" id="featurePanel" style="margin-top:14px"></section>
+<footer>CUNG TRỜI HÓA LẠC • ULTRA 2027<br>Ứng dụng cộng đồng phi thương mại. Điểm công đức là điểm hoạt động nội bộ, không đại diện cho giá trị tâm linh hay đánh giá phẩm hạnh.</footer>
+</main>
+<div class="auth hidden" id="authModal">
+ <div class="auth-card">
+  <h2>✨ Cổng Thiên Đình</h2>
+  <p>Đăng nhập tài khoản quản lý bằng tên tài khoản và mật khẩu. Không cần email, Gmail hoặc cấu hình máy chủ.</p>
+  <form id="authForm">
+   <label>Tên tài khoản</label>
+   <input class="field" type="text" id="username" required autocomplete="username" placeholder="Nhập tên tài khoản">
+   <label>Mật khẩu</label>
+   <input class="field" type="password" id="password" required autocomplete="current-password" placeholder="Nhập mật khẩu">
+   <button class="btn primary" style="width:100%;margin-top:16px" type="submit" id="authSubmit">Đăng nhập quản lý</button>
+  </form>
+  <div class="notice" id="authNotice">Tài khoản quản lý riêng của ứng dụng. Phiên đăng nhập được lưu trên thiết bị này.</div>
+  <button class="btn small" id="authClose" style="margin-top:12px">Đóng</button>
+ </div>
+</div>
+<div class="modal" id="contentModal"><div class="modal-card"><button class="btn small" id="modalClose" style="float:right">Đóng ✕</button><div id="modalContent"></div></div></div>
+<div class="toast" id="toast"></div>
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const STORE='cthl_ultra2027_demo_v1';
+let currentUser=null, deferredInstall=null;
+const defaultState={merit:[],vows:[],notifications:[]};
+function readState(){try{return JSON.parse(localStorage.getItem(STORE))||defaultState}catch{return defaultState}}
+function writeState(s){localStorage.setItem(STORE,JSON.stringify(s));renderDashboard()}
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2400)}
+// ĐĂNG NHẬP CỤC BỘ: không cần máy chủ, email hoặc Gmail.
+const MANAGER_USERNAME = "khangpanh68";
+const MANAGER_PASSWORD_SHA256 = "1f79cfb05d4fc3c4dfb4aa6c77a9a31ef903c2564f5c45b63b7e3104f9359814";
+const AUTH_SESSION_KEY = "cthl_ultra2027_manager_session";
+const CUSTOM_LINKS_KEY = "cthl_ultra2027_custom_links";
+function updateAuthUI(){
+  $('#userLabel').textContent=currentUser?'👑 Ngọc Đế · '+MANAGER_USERNAME:'Khách tham quan';
+  $('#authOpen').classList.toggle('hidden',!!currentUser);
+  $('#logoutBtn').classList.toggle('hidden',!currentUser);
+  $('#adminOpen').classList.toggle('hidden',!currentUser);
+  $('#managerLinksBox').classList.toggle('hidden',!currentUser);
+}
+function getCustomLinks(){
+  try{const data=JSON.parse(localStorage.getItem(CUSTOM_LINKS_KEY)||'[]');return Array.isArray(data)?data:[]}catch{return[]}
+}
+function safeHttpUrl(value){
+  try{const u=new URL(value);return ['http:','https:'].includes(u.protocol)?u.href:null}catch{return null}
+}
+function renderLinks(){
+  const host=$('#customLinks');if(!host)return;
+  host.innerHTML='';
+  getCustomLinks().forEach(item=>{
+    const row=document.createElement('div');row.className='entry custom-link-row';
+    const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener';a.textContent=item.name;
+    row.appendChild(a);
+    if(currentUser){
+      const del=document.createElement('button');del.type='button';del.textContent='Xóa';
+      del.onclick=()=>{
+        if(!confirm('Bạn muốn xóa liên kết "'+item.name+'"?'))return;
+        localStorage.setItem(CUSTOM_LINKS_KEY,JSON.stringify(getCustomLinks().filter(x=>x.id!==item.id)));
+        renderLinks();toast('Đã xóa liên kết');
+      };
+      row.appendChild(del);
+    }
+    host.appendChild(row);
+  });
+}
+function openAdminPanel(){
+  if(!currentUser){toast('Vui lòng đăng nhập tài khoản quản lý');$('#authModal').classList.remove('hidden');return}
+  const state=readState(),links=getCustomLinks();
+  showPanel('⚙️ Trung tâm Quản lý Ngọc Đế','Quản lý cục bộ trên thiết bị hiện tại',`
+    <div class="grid">
+      <div class="tile"><span class="ico">👥</span><b>1 tài khoản quản lý</b><small>${MANAGER_USERNAME}</small></div>
+      <div class="tile"><span class="ico">🌱</span><b>${state.merit.length} nhật ký</b><small>Hoạt động đã lưu</small></div>
+      <div class="tile"><span class="ico">🔗</span><b>${links.length+7} liên kết</b><small>7 liên kết gốc và ${links.length} liên kết thêm</small></div>
     </div>
+    <p class="notice">Dữ liệu đang lưu trên trình duyệt/thiết bị này. Muốn chia sẻ dữ liệu giữa nhiều thiết bị cần có máy chủ riêng.</p>
+  `);
+}
+function syncMeritToCloud(entry){ /* Chế độ cục bộ: nhật ký đã được lưu vào localStorage. */ }
+function renderDashboard(){const s=readState();const total=s.merit.reduce((a,x)=>a+Number(x.points||0),0);$('#meritTotal').textContent=total.toLocaleString('vi-VN');$('#recentList').innerHTML=s.merit.slice(-4).reverse().map(x=>`<div class="entry"><div><b>${escapeHtml(x.title)}</b><br><small>${new Date(x.at).toLocaleString('vi-VN')}</small></div><b style="color:var(--gold)">+${x.points}</b></div>`).join('')||'<div class="entry">Chưa có hoạt động. Hãy bắt đầu bằng một việc thiện nhỏ.</div>'}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function showPanel(title,desc,html){$('#panelTitle').textContent=title;$('#panelDesc').textContent=desc;$('#dashboardPanel').classList.add('hidden');const p=$('#featurePanel');p.classList.remove('hidden');p.innerHTML=html}
+function requireAccount(){if(!currentUser){toast('Đăng nhập để lưu dữ liệu cá nhân');$('#authModal').classList.remove('hidden');return false}return true}
 
-    <div id="adminModal">
-        <div class="admin-card">
-            <h3>⚙️ Quản Lý Liên Kết</h3>
-            <label>Mật Khẩu Quản Lý:</label>
-            <input type="password" id="adminKey" placeholder="Nhập mật khẩu...">
-            <label>Tên Nút Hiển Thị:</label>
-            <input type="text" id="linkName" placeholder="Ví dụ: Trang Chủ">
-            <label>Đường Dẫn URL:</label>
-            <input type="text" id="linkUrl" placeholder="https://...">
-            <label>Chọn Màu Giao Diện Nút:</label>
-            <select id="linkColor">
-                <option value="custom-color-1">🎨 Màu 1: Tím Hồng Huyền Ảo</option>
-                <option value="custom-color-2">🎨 Màu 2: Xanh Dương Trời</option>
-                <option value="custom-color-3">🎨 Màu 3: Xanh Ngọc Lục Bảo</option>
-                <option value="custom-color-4">🎨 Màu 4: Cam Vàng Rực Rỡ</option>
-                <option value="custom-color-5">🎨 Màu 5: Đỏ Hồng Quý Phái</option>
-                <option value="custom-color-6" selected>🎨 Màu 6: Vàng Đồng Kim Sa</option>
-                <option value="custom-color-7">🎨 Màu 7: Tím Xanh Thiên Thanh</option>
-            </select>
-            <div class="admin-actions">
-                <button class="btn-save" id="saveLinkBtn">Lưu Lại</button>
-                <button class="btn-close" id="closeModalBtn">Đóng</button>
-            </div>
-        </div>
-    </div>
+const pages={
+dashboard(){ $('#featurePanel').classList.add('hidden');$('#dashboardPanel').classList.remove('hidden');$('#panelTitle').textContent='👑 Điện Ngọc Đế – Tổng quan';$('#panelDesc').textContent='Tóm tắt hoạt động của bạn';},
+map(){showPanel('🏛️ Bản đồ Thiên Đình','Sơ đồ các điện trong phiên bản 2027',`<div class="grid">${[['👑','Điện Ngọc Đế','Điều hành'],['📜','Điện Thiên Thư','Tri thức'],['🌱','Điện Công Đức','Nhật ký'],['🪷','Điện Tâm Nguyện','Lời nguyện'],['🎁','Điện Phước Lộc','Huy hiệu']].map(x=>`<div class="tile"><span class="ico">${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></div>`).join('')}</div>`);},
+library(){showPanel('📜 Điện Thiên Thư','Thư viện nội dung có thể mở rộng bởi quản trị viên',`<div class="entry"><div><b>Lời nhắc về lòng từ bi</b><br><small>Hãy đối đãi chân thành, tôn trọng và không làm tổn hại người khác.</small></div></div><div class="entry"><div><b>Thực hành biết ơn</b><br><small>Ghi nhận một điều tốt đẹp trong ngày và bày tỏ lòng cảm ơn.</small></div></div><p class="notice">Bản khởi tạo chỉ chứa nội dung mẫu. Có thể bổ sung sách, bài đọc và nguồn được cấp phép.</p>`);},
+merit(){showPanel('🌱 Điện Công Đức','Ghi lại hành động tử tế đã thực hiện',`<form id="meritForm"><label>Tên việc thiện</label><input class="field" id="meritTitle" required maxlength="100" placeholder="Ví dụ: Giúp đỡ hàng xóm"><label style="display:block;margin:12px 0 6px">Mô tả (không bắt buộc)</label><textarea class="field" id="meritDesc" rows="3" maxlength="500" placeholder="Ghi vài dòng về việc bạn đã làm"></textarea><label style="display:block;margin:12px 0 6px">Điểm ghi nhận nội bộ</label><select class="field" id="meritPoints"><option value="1">1 điểm – việc nhỏ</option><option value="3">3 điểm – đóng góp thiết thực</option><option value="5">5 điểm – hoạt động cộng đồng</option></select><button class="btn primary" style="margin-top:14px" type="submit">Lưu nhật ký</button></form><div class="notice">Điểm do ứng dụng quy ước để khuyến khích ghi chép; không thể xác minh hành động ngoài đời và không phải thước đo đạo đức.</div>`);$('#meritForm').onsubmit=async e=>{e.preventDefault();if(!requireAccount())return;const entry={id:crypto.randomUUID(),title:$('#meritTitle').value.trim(),description:$('#meritDesc').value.trim(),points:+$('#meritPoints').value,at:new Date().toISOString()};const s=readState();s.merit.push(entry);writeState(s);await syncMeritToCloud(entry);toast('Đã ghi nhật ký việc thiện');pages.merit()};},
+vows(){showPanel('🪷 Điện Tâm Nguyện','Lưu những mục tiêu và lời nhắc riêng tư',`<form id="vowForm"><textarea class="field" id="vowText" rows="4" maxlength="1000" required placeholder="Viết điều bạn muốn hướng tới..."></textarea><button class="btn primary" style="margin-top:12px">Lưu tâm nguyện</button></form><div class="list">${readState().vows.map(v=>`<div class="entry"><span>${escapeHtml(v.text)}</span><small>${new Date(v.at).toLocaleDateString('vi-VN')}</small></div>`).join('')||'<small class="muted">Chưa có tâm nguyện nào.</small>'}</div>`);$('#vowForm').onsubmit=e=>{e.preventDefault();if(!requireAccount())return;const s=readState();s.vows.push({text:$('#vowText').value.trim(),at:new Date().toISOString()});writeState(s);toast('Đã lưu tâm nguyện');pages.vows()};},
+ranking(){const s=readState();const total=s.merit.reduce((a,x)=>a+x.points,0);showPanel('🏆 Bảng Công Đức','Thống kê hoạt động trên tài khoản hiện tại',`<div class="score">${total} điểm</div><p class="muted">Tổng điểm nội bộ • ${s.merit.length} lượt ghi nhận</p><div class="notice">Bảng xếp hạng cộng đồng cần máy chủ riêng để đồng bộ giữa nhiều thiết bị. Không công khai thông tin cá nhân khi chưa có sự đồng ý.</div>`);},
+rewards(){const total=readState().merit.reduce((a,x)=>a+x.points,0);showPanel('🎁 Điện Phước Lộc','Huy hiệu khích lệ dựa trên nhật ký hoạt động',`<div class="grid"><div class="tile"><span class="ico">🌱</span><b>Mầm Thiện</b><small>${total>=1?'Đã đạt':'Cần 1 điểm'}</small></div><div class="tile"><span class="ico">🪷</span><b>Tâm An</b><small>${total>=10?'Đã đạt':'Cần 10 điểm'}</small></div><div class="tile"><span class="ico">✨</span><b>Ánh Sáng</b><small>${total>=30?'Đã đạt':'Cần 30 điểm'}</small></div></div><p class="notice">Huy hiệu chỉ là phần thưởng tinh thần trong ứng dụng, không quy đổi thành tiền hay lợi ích vật chất.</p>`);},
+alerts(){const s=readState();showPanel('🔔 Điện Thiên Chung','Thông báo và nhắc nhở',`<div class="entry">✨ Chào mừng bạn đến với Cung Trời Hóa Lạc Ultra 2027.</div><div class="entry">🌱 Gợi ý: dành ít phút mỗi ngày để ghi lại một điều tốt đẹp.</div><button class="btn" id="notifyBtn">Cho phép thông báo trên thiết bị</button><p class="notice">Thông báo nền cần quyền trình duyệt và cấu hình PWA hợp lệ.</p>`);$('#notifyBtn').onclick=async()=>{if(!('Notification'in window)){toast('Trình duyệt không hỗ trợ');return}const p=await Notification.requestPermission();toast(p==='granted'?'Đã bật quyền thông báo':'Chưa cấp quyền thông báo')};},
+universe(){showPanel('🌌 Vũ Trụ 3D','Không gian chuyển động nhẹ, tối ưu cho thiết bị di động',`<div class="realm" style="min-height:330px"><div class="moon"></div><div class="palace"><div class="spire"></div><div class="roof"></div><div class="hall"></div><div class="base"></div></div><div class="cloud c1">☁</div><div class="cloud c2">☁</div></div><p class="muted">Đây là cảnh 3D giả lập bằng CSS perspective. Có thể nâng cấp thành WebGL/Three.js khi cần mô hình tương tác chuyên sâu.</p>`);},
+install(){showPanel('📱 Cài đặt ứng dụng','Thêm Cung Trời Hóa Lạc vào màn hình chính',`<p>Trên Android, mở menu trình duyệt và chọn <b>“Cài đặt ứng dụng”</b> hoặc <b>“Thêm vào màn hình chính”</b>.</p><button class="btn primary" id="installBtn">Cài đặt ngay</button><p class="notice">Bản một tệp HTML hỗ trợ thêm lối tắt màn hình chính từ menu trình duyệt. Cài đặt PWA chuẩn và chạy offline cần bổ sung manifest + service worker riêng.</p>`);$('#installBtn').onclick=()=>deferredInstall?deferredInstall.prompt():toast('Mở menu Chrome ⋮ rồi chọn Cài đặt ứng dụng')}}
+$$('[data-page]').forEach(b=>b.addEventListener('click',()=>pages[b.dataset.page]?.()));
+$('#authOpen').onclick=()=>$('#authModal').classList.remove('hidden');$('#authClose').onclick=()=>$('#authModal').classList.add('hidden');
+async function sha256Hex(value){const bytes=new TextEncoder().encode(value);const hash=await crypto.subtle.digest('SHA-256',bytes);return [...new Uint8Array(hash)].map(b=>b.toString(16).padStart(2,'0')).join('')}
+$('#authForm').onsubmit=async e=>{
+  e.preventDefault();
+  const username=$('#username').value.trim();
+  const password=$('#password').value;
+  if(username===MANAGER_USERNAME && await sha256Hex(password)===MANAGER_PASSWORD_SHA256){
+    currentUser={username:MANAGER_USERNAME,role:'admin'};
+    sessionStorage.setItem(AUTH_SESSION_KEY,'1');
+    $('#authModal').classList.add('hidden');
+    $('#password').value='';
+    updateAuthUI();renderLinks();
+    toast('Đăng nhập Ngọc Đế thành công');
+  }else{
+    $('#authNotice').textContent='Tên tài khoản hoặc mật khẩu không chính xác.';
+    toast('Sai tài khoản hoặc mật khẩu');
+  }
+};
+$('#logoutBtn').onclick=()=>{
+  currentUser=null;
+  sessionStorage.removeItem(AUTH_SESSION_KEY);
+  updateAuthUI();renderLinks();
+  toast('Đã đăng xuất');
+};
+$('#adminOpen').onclick=openAdminPanel;
+$('#addLinkBtn').onclick=()=>{
+  if(!currentUser){toast('Chỉ Ngọc Đế mới được quản lý liên kết');return}
+  const name=$('#newLinkName').value.trim();
+  const url=safeHttpUrl($('#newLinkUrl').value.trim());
+  if(!name||!url){toast('Nhập tên và URL http/https hợp lệ');return}
+  const items=getCustomLinks();
+  items.push({id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())),name,url});
+  localStorage.setItem(CUSTOM_LINKS_KEY,JSON.stringify(items));
+  $('#newLinkName').value='';$('#newLinkUrl').value='';
+  renderLinks();toast('Đã thêm liên kết');
+};
+$('#linkSearch').addEventListener('input',()=>{
+  const q=$('#linkSearch').value.trim().toLocaleLowerCase('vi');
+  $$('#linksContainer .link-item').forEach(a=>a.classList.toggle('hidden',!a.textContent.toLocaleLowerCase('vi').includes(q)));
+  $$('#customLinks .custom-link-row').forEach(a=>a.classList.toggle('hidden',!a.textContent.toLocaleLowerCase('vi').includes(q)));
+});
+$('#modalClose').onclick=()=>$('#contentModal').classList.remove('open');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e});
+// Bản một tệp HTML: không đăng ký service worker ngoài. PWA/offline đầy đủ
+// cần manifest và service worker riêng được host qua HTTPS.
 
-    <script>
-        const MAIN_ACCOUNT = {
-            username: "khangpanh68",
-            password: String.fromCharCode(53, 49, 48, 48, 55) + "Panh"
-        };
-        const AUTH_SESSION_KEY = "cungtroi_auth_khangpanh68";
+// Đồng hồ Song Giới và lịch âm Việt Nam: tự cập nhật mỗi giây.
+const VN_TZ='Asia/Ho_Chi_Minh';
+const chiHours=['Tý','Sửu','Dần','Mão','Thìn','Tỵ','Ngọ','Mùi','Thân','Dậu','Tuất','Hợi'];
+function jdFromDate(dd,mm,yy){const a=Math.floor((14-mm)/12),y=yy+4800-a,m=mm+12*a-3;let jd=dd+Math.floor((153*m+2)/5)+365*y+Math.floor(y/4)-Math.floor(y/100)+Math.floor(y/400)-32045;if(jd<2299161)jd=dd+Math.floor((153*m+2)/5)+365*y+Math.floor(y/4)-32083;return jd}
+function newMoon(k){const T=k/1236.85,T2=T*T,T3=T2*T,dr=Math.PI/180;let jd=2415020.75933+29.53058868*k+0.0001178*T2-0.000000155*T3+0.00033*Math.sin((166.56+132.87*T-0.009173*T2)*dr);const M=359.2242+29.10535608*k-0.0000333*T2-0.00000347*T3,Mp=306.0253+385.81691806*k+0.0107306*T2+0.00001236*T3,F=21.2964+390.67050646*k-0.0016528*T2-0.00000239*T3;let C=(0.1734-0.000393*T)*Math.sin(M*dr)+0.0021*Math.sin(2*M*dr)-0.4068*Math.sin(Mp*dr)+0.0161*Math.sin(2*Mp*dr)-0.0004*Math.sin(3*Mp*dr)+0.0104*Math.sin(2*F*dr)-0.0051*Math.sin((M+Mp)*dr)-0.0074*Math.sin((M-Mp)*dr)+0.0004*Math.sin((2*F+M)*dr)-0.0004*Math.sin((2*F-M)*dr)-0.0006*Math.sin((2*F+Mp)*dr)+0.0010*Math.sin((2*F-Mp)*dr)+0.0005*Math.sin((2*Mp+M)*dr);let deltaT=T< -11?0.001+0.000839*T+0.0002261*T2-0.00000845*T3-0.000000081*T*T3:-0.000278+0.000265*T+0.000262*T2;return jd+C-deltaT}
+function sunLongitude(jdn){const T=(jdn-2451545)/36525,T2=T*T,dr=Math.PI/180;const M=357.52910+35999.05030*T-0.0001559*T2-0.00000048*T*T2,L0=280.46645+36000.76983*T+0.0003032*T2;let dL=(1.914600-0.004817*T-0.000014*T2)*Math.sin(dr*M)+(0.019993-0.000101*T)*Math.sin(2*dr*M)+0.000290*Math.sin(3*dr*M),L=(L0+dL)*dr;L-=Math.PI*2*Math.floor(L/(Math.PI*2));return Math.floor(L/Math.PI*6)}
+function getNewMoonDay(k,tz){return Math.floor(newMoon(k)+0.5+tz/24)}
+function getSunLongitudeSector(day,tz){return sunLongitude(day-0.5-tz/24)}
+function getLunarMonth11(yy,tz){const off=jdFromDate(31,12,yy)-2415021,k=Math.floor(off/29.530588853),nm=getNewMoonDay(k,tz);return getSunLongitudeSector(nm,tz)>=9?getNewMoonDay(k-1,tz):nm}
+function getLeapMonthOffset(a11,tz){const k=Math.floor(0.5+(a11-2415021.076998695)/29.530588853);let last=0,i=1,arc=getSunLongitudeSector(getNewMoonDay(k+i,tz),tz);do{last=arc;i++;arc=getSunLongitudeSector(getNewMoonDay(k+i,tz),tz)}while(arc!==last&&i<14);return i-1}
+function solarToLunar(dd,mm,yy,tz=7){const dayNumber=jdFromDate(dd,mm,yy),k=Math.floor((dayNumber-2415021.076998695)/29.530588853);let monthStart=getNewMoonDay(k+1,tz);if(monthStart>dayNumber)monthStart=getNewMoonDay(k,tz);let a11=getLunarMonth11(yy,tz),b11=a11, lunarYear;if(a11>=monthStart){lunarYear=yy;a11=getLunarMonth11(yy-1,tz)}else{lunarYear=yy+1;b11=getLunarMonth11(yy+1,tz)}const lunarDay=dayNumber-monthStart+1,diff=Math.floor((monthStart-a11)/29),lunarLeap=0;let lunarMonth=diff+11;if(b11-a11>365){const leapDiff=getLeapMonthOffset(a11,tz);if(diff>=leapDiff){lunarMonth=diff+10;if(diff===leapDiff){} }}if(lunarMonth>12)lunarMonth-=12;if(lunarMonth>=11&&diff<4)lunarYear--;let leap=0;if(b11-a11>365){const leapDiff=getLeapMonthOffset(a11,tz);if(diff===leapDiff)leap=1;}return{day:lunarDay,month:lunarMonth,year:lunarYear,leap}}
+function vnDateParts(date){const parts=new Intl.DateTimeFormat('en-GB',{timeZone:VN_TZ,day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23',weekday:'long'}).formatToParts(date);const o={};for(const p of parts)if(p.type!=='literal')o[p.type]=p.value;return o}
+function updateRealmClock(){const now=new Date(),p=vnDateParts(now),hour=Number(p.hour),minute=Number(p.minute),second=Number(p.second);const time=`${p.hour}:${p.minute}:${p.second}`;$('#humanTime').textContent=time;$('#solarDate').textContent=`${p.day}/${p.month}/${p.year}`;$('#solarWeekday').textContent=new Intl.DateTimeFormat('vi-VN',{timeZone:VN_TZ,weekday:'long'}).format(now);const idx=Math.floor(((hour+1)%24)/2);const chiStart=(idx*2+23)%24,chiEnd=(chiStart+2)%24;const elapsed=((hour-chiStart+24)%24)*3600+minute*60+second;const khac=Math.min(99,Math.floor((elapsed/7200)*100));const canh=Math.floor((elapsed%7200)/1800)+1;$('#heavenTime').textContent=`KHẮC ${String(khac).padStart(2,'0')}`;$('#heavenHour').textContent=`Thời thần ${chiHours[idx]} • ${String(chiStart).padStart(2,'0')}–${String(chiEnd).padStart(2,'0')} giờ`;$('#heavenSub').textContent=`Thiên canh ${canh}/4 • ${String(khac).padStart(2,'0')} / 100 thiên khắc`;$('#heavenMeter').style.width=`${khac}%`;$('#heavenProgress').textContent=`Tiến trình thời thần: ${khac}% • Mỗi thiên khắc ≈ 72 giây nhân gian`;const lunar=solarToLunar(Number(p.day),Number(p.month),Number(p.year),7);$('#lunarDate').textContent=`${lunar.day} / ${lunar.month}`;$('#lunarMonthYear').textContent=`Tháng ${lunar.month} năm ${lunar.year} (âm lịch)`;$('#lunarLeap').textContent=lunar.leap?'Tháng nhuận':'Âm lịch Việt Nam';$('#clockSync').textContent='● Đồng bộ UTC+7'}
+updateRealmClock();setInterval(updateRealmClock,1000);
 
-        function setAuthenticated(isAuth) {
-            const overlay = document.getElementById("loginOverlay");
-            const app = document.getElementById("appContent");
-            if (isAuth) {
-                sessionStorage.setItem(AUTH_SESSION_KEY, "1");
-                overlay.style.display = "none";
-                app.style.display = "flex";
-                resizeCanvas();
-                updateDateTime();
-            } else {
-                sessionStorage.removeItem(AUTH_SESSION_KEY);
-                app.style.display = "none";
-                overlay.style.display = "flex";
-                document.getElementById("loginPass").value = "";
-                document.getElementById("loginError").innerText = "";
-            }
-        }
+currentUser=sessionStorage.getItem(AUTH_SESSION_KEY)==='1'?{username:MANAGER_USERNAME,role:'admin'}:null;
+renderDashboard();updateAuthUI();renderLinks();
+</script>
 
-        function getStoredLinks() {
-            try {
-                let data = localStorage.getItem('khangpanh_custom_links');
-                if (!data) return [];
-                let links = JSON.parse(data);
-                return Array.isArray(links) ? links : [];
-            } catch (e) { return []; }
-        }
 
-        function renderCustomLinks() {
-            const container = document.getElementById('linksContainer');
-            if (!container) return;
-            container.querySelectorAll('.custom-link-wrapper').forEach(el => el.remove());
 
-            getStoredLinks().forEach((item) => {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'custom-link-wrapper';
 
-                const a = document.createElement('a');
-                a.href = item.url || '#';
-                const colorClass = item.color || 'custom-color-1';
-                a.className = `btn btn-custom ${colorClass}`;
-                a.target = '_blank';
-                a.innerText = item.name || 'Liên kết';
 
-                const delBtn = document.createElement('button');
-                delBtn.className = 'delete-custom';
-                delBtn.innerHTML = '✕';
-                delBtn.onclick = (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    let pass = prompt("Nhập mật khẩu để xóa (********):");
-                    if (pass === "KhangPanh68") {
-                        let links = getStoredLinks().filter(l => l.id !== item.id);
-                        localStorage.setItem('khangpanh_custom_links', JSON.stringify(links));
-                        renderCustomLinks();
-                    } else if (pass !== null) {
-                        alert("❌ Sai mật khẩu!");
-                    }
-                };
 
-                wrapper.appendChild(a);
-                wrapper.appendChild(delBtn);
-                container.appendChild(wrapper);
-            });
-        }
-
-        function updateDateTime() {
-            const now = new Date();
-            const clockEl = document.getElementById('clock');
-            if (clockEl) {
-                clockEl.innerText = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-            }
-
-            const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
-            const calendarEl = document.getElementById('calendar');
-            if (calendarEl) {
-                calendarEl.innerText = `${days[now.getDay()]}, Ngày ${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
-            }
-        }
-        setInterval(updateDateTime, 1000);
-
-        window.addEventListener('DOMContentLoaded', () => {
-            renderCustomLinks();
-            updateDateTime();
-
-            const loginForm = document.getElementById("loginForm");
-            loginForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                const u = document.getElementById("loginUser").value.trim();
-                const p = document.getElementById("loginPass").value;
-                const errEl = document.getElementById("loginError");
-
-                if (u === MAIN_ACCOUNT.username && p === MAIN_ACCOUNT.password) {
-                    errEl.innerText = "";
-                    setAuthenticated(true);
-                } else {
-                    errEl.innerText = "❌ Sai tên tài khoản hoặc mật khẩu!";
-                }
-            });
-
-            if (sessionStorage.getItem(AUTH_SESSION_KEY) === "1") {
-                setAuthenticated(true);
-            } else {
-                setAuthenticated(false);
-            }
-
-            document.getElementById("logoutBtn").addEventListener("click", () => {
-                setAuthenticated(false);
-            });
-
-            const modal = document.getElementById('adminModal');
-            document.getElementById('adminBtn').addEventListener('click', () => {
-                modal.style.display = 'flex';
-            });
-            document.getElementById('closeModalBtn').addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
-            document.getElementById('saveLinkBtn').addEventListener('click', () => {
-                const key = document.getElementById('adminKey').value.trim();
-                const name = document.getElementById('linkName').value.trim();
-                let url = document.getElementById('linkUrl').value.trim();
-                const color = document.getElementById('linkColor').value;
-
-                if (key !== "KhangPanh68") {
-                    alert("❌ Sai mật khẩu quản lý!");
-                    return;
-                }
-                if (!name || !url) {
-                    alert("⚠️ Vui lòng điền đủ tên và URL!");
-                    return;
-                }
-                if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
-
-                let links = getStoredLinks();
-                links.push({ id: 'link_' + Date.now(), name, url, color });
-                localStorage.setItem('khangpanh_custom_links', JSON.stringify(links));
-
-                document.getElementById('adminKey').value = '';
-                document.getElementById('linkName').value = '';
-                document.getElementById('linkUrl').value = '';
-                modal.style.display = 'none';
-                renderCustomLinks();
-                alert("✨ Thêm liên kết thành công!");
-            });
-
-            document.getElementById('audioBtn').addEventListener('click', toggleAudio);
-            document.getElementById('themeBtn').addEventListener('click', toggleTheme);
-            document.getElementById('divineBtn').addEventListener('click', getNewMessage);
-        });
-
-        const messages = [
-            "\"Tâm tịnh hướng thiên, vạn sự hanh thông, phước lộc tự khắc tề tựu.\"",
-            "\"Ngọc Đế chiếu lệnh: Hôm nay đại cát, làm việc gì cũng hanh thông, suôn sẻ.\"",
-            "\"Gió lành đưa lối, mây trắng che đầu, bình an là cội nguồn của phú quý.\"",
-            "\"Thiên đình linh khí hội tụ, người thành tâm cầu nguyện ắt gặp quý nhân phù trợ.\""
-        ];
-        function getNewMessage() {
-            playChimeSound();
-            const msgEl = document.getElementById('divineMessage');
-            if (msgEl) msgEl.innerText = messages[Math.floor(Math.random() * messages.length)];
-        }
-
-        const themes = ['', 'theme-gold', 'theme-teal'];
-        let currentThemeIndex = 0;
-        function toggleTheme() {
-            playChimeSound();
-            document.body.classList.remove(themes[currentThemeIndex]);
-            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-            if (themes[currentThemeIndex]) document.body.classList.add(themes[currentThemeIndex]);
-        }
-
-        let audioCtx = null, isAudioPlaying = false, ambientInterval = null;
-        function toggleAudio() {
-            const btn = document.getElementById('audioBtn');
-            if (!isAudioPlaying) {
-                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                if (audioCtx.state === 'suspended') audioCtx.resume();
-                isAudioPlaying = true;
-                if (btn) btn.innerText = "🎵 Âm Thanh: Bật";
-                ambientInterval = setInterval(() => { if (isAudioPlaying) playChimeSound(); }, 8000);
-                playChimeSound();
-            } else {
-                isAudioPlaying = false;
-                if (btn) btn.innerText = "🎵 Âm Thanh: Tắt";
-                if (ambientInterval) clearInterval(ambientInterval);
-            }
-        }
-
-        function playChimeSound() {
-            try {
-                const tempCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = tempCtx.createOscillator();
-                const gain = tempCtx.createGain();
-                osc.frequency.setValueAtTime([523.25, 659.25, 783.99, 1046.50][Math.floor(Math.random() * 4)], tempCtx.currentTime);
-                osc.type = 'sine';
-                gain.gain.setValueAtTime(0.04, tempCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.0001, tempCtx.currentTime + 2.5);
-                osc.connect(gain); gain.connect(tempCtx.destination);
-                osc.start(); osc.stop(tempCtx.currentTime + 2.5);
-            } catch (e) {}
-        }
-
-        const canvas = document.getElementById('bgCanvas');
-        const ctx = canvas.getContext('2d');
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        let particles = Array.from({ length: 50 }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            radius: Math.random() * 1.8 + 0.5,
-            alpha: Math.random(),
-            speed: Math.random() * 0.3 + 0.1,
-            alphaSpeed: (Math.random() * 0.02 + 0.005) * (Math.random() < 0.5 ? 1 : -1)
-        }));
-
-        let fireworks = [];
-        window.addEventListener('click', (e) => {
-            if (sessionStorage.getItem(AUTH_SESSION_KEY) !== "1") return;
-            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('#adminModal')) return;
-            createFirework(e.clientX, e.clientY);
-            playChimeSound();
-        });
-
-        function createFirework(x, y) {
-            const color = ['#ffd700', '#00ffcc', '#ff3366', '#33ccff', '#ff9900'][Math.floor(Math.random() * 5)];
-            for (let i = 0; i < 30; i++) {
-                const angle = Math.random() * Math.PI * 2;
-                const speed = Math.random() * 5 + 2;
-                fireworks.push({
-                    x, y,
-                    vx: Math.cos(angle) * speed,
-                    vy: Math.sin(angle) * speed,
-                    alpha: 1,
-                    decay: Math.random() * 0.02 + 0.015,
-                    color,
-                    radius: Math.random() * 2 + 1
-                });
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(p => {
-                p.y -= p.speed;
-                p.alpha += p.alphaSpeed;
-                if (p.alpha <= 0.1 || p.alpha >= 1) p.alphaSpeed *= -1;
-                if (p.y < 0) {
-                    p.y = canvas.height;
-                    p.x = Math.random() * canvas.width;
-                }
-
-                ctx.save();
-                ctx.globalAlpha = Math.max(0, Math.min(1, p.alpha));
-                ctx.fillStyle = '#ffffff';
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            });
-
-            for (let i = fireworks.length - 1; i >= 0; i--) {
-                const f = fireworks[i];
-                f.x += f.vx;
-                f.y += f.vy;
-                f.vy += 0.06;
-                f.vx *= 0.985;
-                f.alpha -= f.decay;
-
-                if (f.alpha <= 0) {
-                    fireworks.splice(i, 1);
-                    continue;
-                }
-
-                ctx.save();
-                ctx.globalAlpha = Math.max(0, f.alpha);
-                ctx.fillStyle = f.color;
-                ctx.beginPath();
-                ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            }
-
-            requestAnimationFrame(animate);
-        }
-        animate();
-    </script>
-</body>
-</html>
+</body></html>
