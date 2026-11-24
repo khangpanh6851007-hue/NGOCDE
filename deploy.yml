@@ -1,8 +1,8 @@
-name: Deploy Cung Troi Hoa Lac Ultra 2027 to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, master]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: github-pages
+  group: "github-pages"
   cancel-in-progress: true
 
 jobs:
@@ -21,25 +21,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Prepare static site
-        run: |
-          mkdir -p dist
-          if [ -f index.html ]; then
-            cp index.html dist/index.html
-          elif [ -f index_ultra2027_v5_local.html ]; then
-            cp index_ultra2027_v5_local.html dist/index.html
-          else
-            echo "Không tìm thấy index.html hoặc index_ultra2027_v5_local.html"
-            exit 1
-          fi
-          [ ! -f manifest.webmanifest ] || cp manifest.webmanifest dist/
-          [ ! -f sw.js ] || cp sw.js dist/
-          touch dist/.nojekyll
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
-      - name: Upload Pages artifact
+      - name: Upload website artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: "."
 
   deploy:
     environment:
